@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="trainningUser" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/TrainningUser">
+		<!-- Up[load user profile -->
+		
+		<action name="beforeTrainningUserViewHeader" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="beforeTrainningUserViewHeader">
+			<result name="success">/view/Over2Cloud/feedback/master/trainningMaster/trainningUserView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="viewTrainningUserInGrid" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="trainningUserViewInGrid">
+			<result name="success" type="json">
+				<param name="root">masterViewList</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="beforeTrainingUserCreate" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="beforeTrainingUserAdd">
+			<result name="success">/view/Over2Cloud/feedback/master/trainningMaster/createTrainningUser.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="addTrainningUserServerValidation" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="addTrainningUserServerValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="addTrainningUser" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="addTrainningUser">
+			<interceptor-ref name="basicStack"/>
+            <interceptor-ref name="token" />
+			<result name="success" type="json">
+				<param name="root">successMessage</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			 <result name="invalid.token">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="deleteTrainningUser" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="deleteTrainningUser">
+			<result name="success" type="json">
+				<param name="root">successMessage</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		
+		<action name="beforeTrainingExcelUpload"  class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="beforeTrainingExcelUpload">
+            <result name="success">/view/Over2Cloud/feedback/master/trainningMaster/uploadTrainingExcel.jsp</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+		
+		 <action name="readTrainingExcelData" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser"  method="readTrainingExcelData">
+			<result name="success">/view/Over2Cloud/feedback/master/trainningMaster/confirmTrainingExcel.jsp</result>
+            <result name="error" >/view/common_pages/error.jsp</result>
+            <result name="login" >/view/common_pages/invalidSession.jsp</result>
+	</action>
+	
+			<action name="uploadexcelfile"  class="com.Over2Cloud.ctrl.feedback.master.TrainningUser"  method="uploadexcelfile">
+            <result name="success" type="json"><param name="root">masterViewList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	
+     <action name="saveTrainingExcel" class="com.Over2Cloud.ctrl.feedback.master.TrainningUser" method="saveTrainingExcel">
+            <result name="success" type="json"><param name="root">msg</param></result>
+            <result name="error" >/view/common_pages/error.jsp</result>
+            <result name="login" >/view/common_pages/invalidSession.jsp</result>
+     </action>  	
+   	
+   	
+		
+		
+		
+		
+		
+		
+		
+		
+	</package>
+</struts>

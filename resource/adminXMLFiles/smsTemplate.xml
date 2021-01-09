@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <constant name="struts.devMode" value="true" />
+   <package name="smsTemplate" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/smsTemplate">
+   
+   
+      <!--  Create by Mohit -->
+        <action name="beforeSMSTemplateListView" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="getHeaderBeforeViewSmsTemplate">
+         <result name="success">/view/Over2Cloud/Admin/smsTemplate/beforeViewSMSTemplate.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="viewSMSTemplate" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="viewSMSTemplate">
+         <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      
+		<action name="beforeUploadSMSTemplate" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="beforeUploadSMSTemplate">
+			<result name="success">/view/Over2Cloud/Admin/smsTemplate/beforViewExcelUploadSMSTemplate.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="uploadexcelfileSMSTemplate" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="uploadexcelfileSMSTemplate">
+			<result name="success" type="json">
+				<param name="root">XYZ</param>
+			</result>
+		</action>
+		
+		
+		  <action name="SMSTemplate_ExcelView" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="SMSTemplate_ExcelView">
+			<result name="success">/view/Over2Cloud/Admin/smsTemplate/confirmSMSTemplateExcel.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		 <action name="showUploadSmsTemplate" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="showUploadSmsTemplate">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+	<action name="saveSMSTemplateExcle" class="com.Over2Cloud.ctrl.admin.smsTemplate.smsTemplate" method="saveSMSTemplateExcle">
+		  <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+   </package>
+</struts>

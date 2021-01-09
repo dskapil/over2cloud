@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+    <package name="generalQueryMaster" extends="struts-default,json-default" namespace="/view/generalQueryMaster">
+        <!-- by jyoti Source master 03-06-2017 -->
+        <action name="genegalQuerySource" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySource" method="viewSourceHeader">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryHeadSource.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewSubSourceData" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySource" method="viewSourceInGrid">
+            <result name="success" type="json" >
+                <param name="root">viewSourceData</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeAddSource" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySource" method="beforeAddSourceType">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryAddSource.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="sourceTypeSave" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySource" method="insertSource">
+            <result name="success" type="json" >
+                <param name="root">data</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewSource"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySource" method="fetchSource">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/fetchSource.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- end  -->
+        <!-- Speciality and Doctor -->
+        <action name="beforespecialityView"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="beforespecialityView">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQuerySpecialityHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="specialityDetails"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="specialityDetails">
+            <result name="success" type="json">
+                <param name="root">viewList</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeSpecialityAdd"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="beforeSpecialityAdd">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQuerySpeciality.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addSpecialityDetails" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="addSpecialityDetails">
+            <result name="success" type="json">
+                <param name="root">success</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeEditSpeciality"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="beforeEditSpeciality">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQuerySpecialityModify.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="deleteSpecialityList"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="deleteSpecialityList">
+            <result name="success" type="json">
+                <param name="root">deleteSpeciality</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="editSpecialityList"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="editSpecialityList">
+            <result name="success" type="json">
+                <param name="root">editSpecialityData</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeUploadSpeciality"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="beforeUploadSpeciality">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQuerySpecialityUpload.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="uploadSpecialityExcelfile" class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="readExcelSpecialityAndDoctor">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryConfirmExcelSpeciality.jsp</result>
+        </action>
+        <action name="showSpecialityDoctorExcel"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="showSpecialityDoctorExcel">
+            <result name="success" type="json">
+                <param name="root">viewListData</param>
+            </result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="saveSpecialityAndDoctorData"  class="com.Over2Cloud.ctrl.gq.master.GeneralQuerySpeciality" method="saveSpecialityAndDoctorData">
+            <result name="success" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+        <!-- Mapping Doctors with Offering starts by jyoti 10-05-2017 -->
+        <action name="doctorActivityBoard"  class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="doctorActivityBoard" >
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryDoctorHeader.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewrDoctorList" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="viewrDoctorList">
+            <result name="success" type="json" >
+                <param name="root">masterViewList</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeDoctorList"  class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="beforeDoctorList" >
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryAddDoctor.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addDoctorList" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="addDoctorList" >
+            <result name="success" type="json">
+                <param name="root">dataArray</param>
+            </result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/common_pages/invalidSession.jsp</result>
+        </action>
+        <action name="deleteDoctorList" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="deleteDoctorList">
+            <result name="success" type="json" >
+                <param name="root">deteteDoctor</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeEditDoctorList"  class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="beforeEditDoctorList">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryEditDoctor.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="editDoctorList"  class="com.Over2Cloud.ctrl.gq.master.GeneralQueryDoctor" method="editDoctorList">
+            <result name="success" type="json">
+                <param name="root">editDoctorData</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- end -->
+        <!-- Lead Category -->
+        <action name="beforeCategoryHeader" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="beforeCategoryHeader">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryCategoryHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewLeadCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="viewLeadCategory">
+            <result name="success" type="json" >
+                <param name="root">viewList</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewSubCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="viewSubCategory">
+            <result name="success" type="json" >
+                <param name="root">viewList</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeAddLeadCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="beforeAddLeadCategory">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryAddCategory.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addLeadCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="addLeadCategory">
+            <result name="success" type="json">
+                <param name="root">data</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeAddLeadSubCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="beforeAddLeadSubCategory">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryAddSubCategory.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addLeadSubCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="addLeadSubCategory">
+            <result name="success" type="json">
+                <param name="root">data</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+          <action name="fetchSubCategory"  class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategory" method="fetchSubCategory">
+            <result name="success" type="json">
+                <param name="root">jssonArr</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeUploadLeadCategory" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategoryUpload" method="beforeUploadLeadCategory">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryCategoryUpload.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="leadCategoryUploadexcelfile" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategoryUpload" method="readExcel">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryCategoryUploadConfirm.jsp</result>
+        </action>
+        <action name="showLeadCategoryDetails" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategoryUpload" method="showUploadDetails">
+            <result name="success" type="json"><param name="root">viewListData</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="saveLeadCategoryExcelData" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryCategoryUpload" method="saveExcelData">
+            <result name="success" type="json"><param name="root">message</param></result>
+            <result name="error" type="json"><param name="root">message</param></result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+         <!-- Lead Esclation -->
+        <action name="viewEscalationConfigureHeader" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="viewEscalationConfigureHeader">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryEscalationHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewEscalationConfigureData" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="viewEscalationConfigureData">
+            <result name="success" type="json" >
+                <param name="root">viewList</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="beforeAddEscalationConfigure" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="beforeAddEscalationConfigure" >
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryAddEscaltaion.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addGeneralQueryEsclation" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="addGeneralQueryEsclation" >
+            <result name="success" type="json">
+                <param name="root">data</param>
+            </result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/common_pages/invalidSession.jsp</result>
+        </action>
+        <action name="nextLevelEsc" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="nextLevelEsc">
+            <result name="success" type="json">
+                <param name="root">commonJSONArray</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="fetchEmployee" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="fetchEmployee">
+            <result name="success" type="json">
+                <param name="root">empList</param>
+            </result>
+            <result name="error">/view/common_pages/error.jsp</result>
+            <result name="login">/view/common_pages/invalidSession.jsp</result>
+        </action>
+        <action name="viewAllotEmployee" class="com.Over2Cloud.ctrl.gq.master.GeneralQueryEscalation" method="viewAllotEmployee">
+            <result name="success" >/view/Over2Cloud/generalQuery/generalQueryMaster/generalQueryEscalationDetails.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+    </package>
+</struts>

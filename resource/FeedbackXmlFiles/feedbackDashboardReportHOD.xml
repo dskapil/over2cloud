@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="feedbackDashboardHOD" extends="struts-default,json-default" namespace="/view/Over2Cloud/feedback/feedbackDashboardReportHOD">
+
+  <!-- Open By  Dashboard By  Sandeep   -->
+		<action name="showOpenByComplaints"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showOpenByComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+		<!-- Start New Action for fetch template by pintu 23-06-2017 -->
+		
+		<action name="fetchTemplate"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="fetchTemplate">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+        	<result name="error">/view/error.jsp</result>
+	 		<result name="login">/view/invalidSession.jsp</result>
+     	</action>  
+     	 <action name="fetchDetails"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="fetchDetails">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+        	<result name="error">/view/error.jsp</result>
+	 		<result name="login">/view/invalidSession.jsp</result>
+     	</action> 
+     	<action name="fetchEmailHistory"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="fetchEmailHistory">
+			<result name="success">/view/Over2Cloud/feedback/emailHistory.jsp</result>
+        	<result name="error">/view/error.jsp</result>
+	 		<result name="login">/view/invalidSession.jsp</result>
+     	</action> 
+     	 
+     	<action name="saveEmail"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="saveEmail">
+			<result name="success">/view/success.jsp</result>
+        	<result name="error">/view/error.jsp</result>
+	 		<result name="login">/view/invalidSession.jsp</result>
+     	</action> 
+     	 
+     	<!-- End  -->
+     	 
+		<!-- Start Patient Delight Report For HOD :Sanjay -->
+		<action name="fetchFeedbackDashboardReportHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchFeedbackDashboardReport">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/feedbackDashboardReport.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showDeptWiseAnalysisTableHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showDeptWiseAnalysisTable">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/dashboardReportTableView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="selectQuestionforPatientHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="selectQuestionforPatient">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<action name="fetchDepWiseSatisfactionHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDepWiseSatisfaction">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<action name="showComparativeAnalysisHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showComparativeAnalysis">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/feedbackComparativeAnalysis.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="feedbackStatusForComparativeAnalysisHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="feedbackStatusForComparativeAnalysis">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showTaTWiseStatusHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showTaTWiseStatus">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<action name="viewGridDataOverFeedbackSatisfactionHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="viewGridDataFeedbackSatisfaction">
+			<result name="success" type="json"></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<action name="viewGridDataRatingReportHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="dashRatingDataInGridForReport">
+			<result name="success" type="json"><param name="root">masterViewList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchFeedbackSatisfactionTableHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDepWiseSatisfaction">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/dashboardReportTableView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showPendingFeedbackHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchHODPendingFeedback">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/NormalPendingFeedback.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="beforeCategoryPieJsonData" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="beforeCategoryPieJsonData">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/CategoryPieCharts.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="CategoryPieJsonData" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="CategoryPieJsonData">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		  <action name="DepartmentPieJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="DepartmentPieJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchTATTableDataHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showTaTWiseStatus">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/dashboardReportTableView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="getRatingDataOnClickForReportHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="getRatingDataOnClickForReport">
+			<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/viewRatingReportGrid.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="viewGridDataOverTATHOD" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="viewGridDataFeedbackTAT">
+			<result name="success" type="json"></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="beforeCategoryPieJsonData"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="beforeCategoryPieJsonData">
+          <result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/CategoryPieCharts.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+        </action>
+        
+           <action name="CategoryPieJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="CategoryPieJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action> 
+		
+		<action name="beforeSubCategoryPieJsonData"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="beforeCategoryPieJsonData">
+          <result name="success">/view/Over2Cloud/feedback/feedbackDashboardReportHOD/SubCategoryPieCharts.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+        </action>
+        
+           <action name="SubCategoryPieJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="SubCategoryPieJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<!-- 02-05-2017 -->
+		<action name="severityJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="severityJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="top5complaintJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="top5complaintJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="patientCategaryWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="patientCategaryWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="fdbGlassRatingDashboardTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fdbGlassRatingDashboardTableView">
+			<result name="success" type="json"><param name="root">listData</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="patientCategaryWiseComplaintforData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="patientCategaryWiseComplaintforData" >
+      		<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackPatientCategoryData.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="locationWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="locationWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="feedbackTypeWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="feedbackTypeWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<!-- 03-05-2017 -->
+		<action name="productivityWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="productivityWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="rcaCategaryWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="rcaCategaryWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="capaCategaryWiseComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="capaCategaryWiseComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showFeedbackDepartment" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackDepartment">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+		<!-- End HOD Patient Delight Report:Sanjay Dashboard -->
+		
+<!-- Dashboard By Chandan for Satisfaction Index -->
+		
+		
+		<action name="dashboardForSatisfactionBoard" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="dashboardForSatisfactionBoard">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+				
+		<action name="dashboardForNetSatisfactionScore" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="dashboardForNetSatisfactionScore">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showOverAllblock" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="showOverAllblock">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="followupComplaint"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="followupComplaint" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+ <action name="taskBoardCounter"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="taskBoardCounter" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>		
+		<action name="showFeedbackSubcategory" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackSubcategory">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		
+		<!-- Dashboard By Chandan for Satisfaction Index -->
+
+			
+<!-- CEO Link Aarif -->
+
+		<action name="fetchFeedbackDashboardReportCEO" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="fetchFeedbackDashboardReportCEO">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardCEO.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="dashboardForRatingCEO" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="dashboardForRatingCEO">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchQuestionList" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardCEO" method="fetchQuestionList">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+       <action name="showDeptWiseCompliants" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showDeptWiseCompliants">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/dashboardDeptWise.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="showComparativeAnalysisForNegFeedback" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showComparativeAnalysisForNegFeedback">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showLocWiseFeedReport" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showLocWiseFeedReport">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardLocationCEO.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+
+        <action name="showSatisfactionIndex" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showSatisfactionIndex">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+
+
+		<action name="showCatWiseCompliants" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showCatWiseCompliants">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/dashboardCatWise.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showSubCatWiseCompliants" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showSubCatWiseCompliants">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/dashboardSubCatWise.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showAllQuesReportComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showAllQuesReportComparative">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardAllQuesReport.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showAllQuesReportWithAllUnitComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showAllQuesReportWithAllUnitComparative">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardAllQuesReportWithAllUnit.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="fetchDashboardCommonAction" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDashboardCommonAction">
+			<result name="collection">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardCollection.jsp</result>
+			<result name="overall">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardOverall.jsp</result>
+		    <result name="peReport">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardPEReport.jsp</result>
+            <result name="tracker">/view/Over2Cloud/feedback/dashboardForCEO/feedbackTracker.jsp</result>
+			<result name="depart-rating">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardDepart-rating.jsp</result>
+			<result name="ticket-board">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardTicket-board.jsp</result>
+			<result name="rca-capa">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardRca-capa.jsp</result>
+			<result name="task_board">/view/Over2Cloud/CalendarPages/CalendarDashboard.jsp</result>
+			<result name="productivity">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardProductivity.jsp</result>
+			<result name="appreciation">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardAppreciation.jsp</result>
+			<result name="wordCloud">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardWordCloud.jsp</result>
+			<result name="vistaAnalysis">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardVistaAnalysis.jsp</result>
+			<result name="employee_feedback">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardEmployeeFeedback.jsp</result>
+			<result name="consolidated-data">/view/Over2Cloud/feedback/dashboardForCEO/consolidatedDataShowDashboard.jsp</result>
+			<result name="comparative">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardComparative.jsp</result>
+			<result name="patient">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardPatientComm.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showFeedbackTracker" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackTracker">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/fetchFeedbackTracker.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="showReopenStatusComplaints"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showReopenStatusComplaints">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="showStarRatingWiseData"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showStarRatingWiseData">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+        <action name="StatusWisePateintData"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardPatientHOD"  method="StatusWisePateintData">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+		 <action name="ModeWisePateintData"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardPatientHOD"  method="ModeWisePateintData">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+		
+		
+		
+		
+		<action name="showFeedbackTrackerHistory" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showFeedbackTrackerHistory">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/fetchFeedbackTrackerHistory.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="fetchUnitByRegion" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchUnitByRegion">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchDepartmentByUnit" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDepartmentByUnit">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>	
+		<action name="fetchSectionByPatType" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchSectionByPatType">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+		<action name="fetchQuestionNo" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchQuestionNo">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="fetchSubQuestionNo" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchSubQuestionNo">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+ 
+        <action name="showFeedbackRatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackRatingCounter">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+	<action name="showFeedbackRatingCounterDept" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackRatingCounterDept">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/datashowDepartment.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<!-- Chandan Show Patient History -->
+				<action name="viewPatientHistory" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackConfigureKeyDashboard" method="viewPatientHistory">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/patientHistoryTracker.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+		<!-- Show Patient History -->
+		<action name="showNPSDataModeWise" class="com.Over2Cloud.ctrl.feedback.feedbackDashboardReportConsolidated" method="showNPSDataModeWise">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+	
+	 <action name="showFeedbackCollectionCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackCollectionCounter">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showFeedbackCollectionDATACounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackCollectionCounterDataView">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCollectionRate.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+	<action name="showFeedbackCollectionComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackCollectionComparative">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+			
+	<action name="showFeedbackCollectionComparativeDATA" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackCollectionComparativeDATA">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCompareRegion.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+	</action>
+		
+		<action name="showFeedbackRatingComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackRatingComparative">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showFeedbackRatingComparativeDATADept" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackRatingComparativeDATA">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCompareDepartment.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+<action name="showFeedbackRatingComparativeDATA" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackRatingComparativeDATA">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCompareAssibility.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fatchMultiselectUnit" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="fatchMultiselectUnit">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/multiUnitListPage.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+		
+		<!-- Chandan -->
+		
+	
+	
+	
+		<!-- Chandan NPS -->
+		<action name="showNPSRatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showNPSRatingCounter">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showNPSRatingCounterforChart" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showNPSRatingCounterNPS">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowNPS.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="showNPSRatingCounterforChartAll" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showNPSRatingCounterNPS">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowNPSAll.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+    </action>
+		
+		
+		<action name="showFeedbackNPSComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackNPSComparative">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+	<action name="showFeedbackNPSComparativeDATA" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackNPSComparativeDATA">
+		<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCompareNPS.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+     <!-- Comparative Scorecard NPS  -->
+		<action name="showNPSComparativeScorecard" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showFeedbackNPSComparativeScoreCard">
+		<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/scorecardComparativeNPS.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>  
+       
+       <action name="LocationTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="LocationTableView">
+			<result name="success" type="json"><param name="root">viewLocationList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+       
+       
+		<action name="showOverAllRatingComparative" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllRatingComparative">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+   <action name="showOverAllRatingComparativeDATA" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllRatingComparativeDATA">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowCompareOverAll.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	 
+		
+		<!-- Chandan NPS -->
+		<!-- OverAll -->
+		
+		<action name="showOverAllExperienceRatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllExperienceRatingCounter">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	<!-- shivam -->	
+		<action name="showOverAllExperienceDATARatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllExperienceRatingCounterOverAll">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowOverAll.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showOverAllExperienceDATARatingCounterAll" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllExperienceRatingCounterOverAll">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowOverFormAll.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showAccessibilityDATARatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllExperienceRatingCounterOverAll">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowAccessibility.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showAccessibilityDATARatingCounterAll" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showOverAllExperienceRatingCounterOverAll">
+			<result name="success" >/view/Over2Cloud/feedback/dashboardForCEO/dataShowAccessibilityAll.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showNPSDatawithRatingCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showNPSDatawithRatingCounter">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/ratingDataNPS.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="fdbRatingForComparativeDashboardTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fdbRatingForComparativeDashboardTableView">
+			<result name="success" type="json"><param name="root">listData</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="showNPSDatawithRatingCounterScordcard" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showNPSDatawithRatingCounterScordcard">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="fbCollectionDashboardTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fbCollectionDashboardTableView">
+			<result name="success" type="json"><param name="root">listData</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+	   <action name="complaintTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="complaintTableView">
+			<result name="success" type="json"><param name="root">listData</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showRecurringComplaints" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="showRecurringComplaints">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showAppreciationComplaints" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="showAppreciation">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showAppreciationDepartments" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="showAppreciationDepartments">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="appreciationDataView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="appreciationDataView">
+			<result name="success" type="json"><param name="root">appreciationList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="locationDataView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="locationDataView">
+			<result name="success" type="json"><param name="root">appreciationList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+<action name="VistaPieJsonData"   class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="VistaPieJsonData" >
+      		<result name="success" type="json"><param name="root">jsonArray</param></result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<!-- QUestions Comparative feedbackDashboardAllQuesReportWithAllUnit.jsp showAllQuesReportWithAllUnitComparative-->
+		
+		<action name="showAllQuesReportWithRatingAnalysis" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackConfigureKeyDashboard" method="showAllQuesReportWithRatingAnalysis">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardAllQuesReportWithRatingAnalysis.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="showDemographicRatingAnalysis" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showDemographicRatingAnalysis">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+		 <action name="showHeatMapAnalysis" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showHeatMapAnalysis">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+        
+        
+        
+         <action name="showTrendAnalysis" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showTrendAnalysis">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<!-- Alert Patient Preference -->
+		
+		<action name="showPatientTracker" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="showPatientTracker">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/patientHistoryTracker.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="alertPatientPreference" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackConfigureKeyDashboard" method="alertPatientPreference">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/alertPatientPrefernce.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<!-- Server Side Validation -->
+	 <action name="alertpatienttoDeptValidation" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackConfigureKeyDashboard" method="alertpatienttoDeptValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="alertpatienttoDept" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackConfigureKeyDashboard" method="alertpatienttoDept">
+	<interceptor-ref name="token" /> 
+                <interceptor-ref name="basicStack"/>
+	<result name="success" type="json"><param name="root">successMessage</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="invalid.token">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+		
+		<!-- Alert Patient Preference -->
+		
+		
+		<!-- Location Dashboard By Sandeep  -->
+		<action name="showStatusWiseComplaints"  class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="showStatusWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+     
+		<action name="fdbRatingForRCACAPADashboardTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="fdbRatingForRCACAPADashboardTableView">
+			<result name="success" type="json"><param name="root">appreciationList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="fdbStatusForPatientCommTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardPatientHOD" method="fdbStatusForPatientCommTableView">
+			<result name="success" type="json"><param name="root">appreciationList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="RecurringDashboardTableView" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReport" method="RecurringDashboardTableView">
+			<result name="success" type="json"><param name="root">masterViewList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+	</package>
+</struts> 

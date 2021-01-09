@@ -1,0 +1,218 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="configureReport" extends="struts-default,json-default" namespace="/view/Over2Cloud/configureReport">
+    
+    <!-- 
+      VAM -->
+    
+    <action name="fetchWidgetHomeScreenVAM" class="com.Over2Cloud.ctrl.configureDashboard.HomePageDashboardAction" method="fetchWidgetHomeScreenVAM">
+	<result name="success">/view/Over2Cloud/Dashboard/homeScreen/VAM/homeScreenWidget.jsp</result>
+	<result name="confPage" type="json"><param name="root">catDashConf</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+    
+   <!--   asset management   -->
+    
+     <action name="fetchWidgetHomeScreenOfAsset" class="com.Over2Cloud.ctrl.configureDashboard.HomePageDashboardAction" method="fetchWidgetHomeScreenOfAsset">
+	<result name="success">/view/Over2Cloud/AssetOver2Cloud/homeTiles/homeScreenWidget.jsp</result>
+	<result name="confPage" type="json"><param name="root">catDashConf</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+<!--       pcs home page 
+ -->    
+    
+    
+    
+    <action name="fetchAllAppOnHome" class="com.Over2Cloud.ctrl.configureDashboard.HomePageDashboardAction" method="fetchAllAppOnHomeScreenDashboard">
+		<result name="success" type="json"><param name="root">jsonArry</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+    
+    
+    <action name="HomeDashboardTiles" class="com.Over2Cloud.ctrl.configureDashboard.HomePageDashboardAction" method="fetchWidgetHomeScreenDashboard">
+	<result name="success">/view/Over2Cloud/Dashboard/homeScreen/homeScreenDashboardTiles.jsp</result>
+	<result name="confPage" type="json"><param name="root">catDashConf</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="HomeDashboardTilesofChecklist" class="com.Over2Cloud.ctrl.configureDashboard.HomePageDashboardAction" method="fetchWidgetHomeScreenOfClDashboard">
+	<result name="success">/view/Over2Cloud/Dashboard/homeScreen/homeScreenDashboardClTiles.jsp</result>
+	<result name="confPage" type="json"><param name="root">catDashConf</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	
+     
+    
+        <!-- Lead Marketing -->
+        <action name="viewConfDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/Over2Cloud/Marketing/Dashboard/DashboardHeaderSales.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- PCS -->
+        <action name="viewConfDashboardPCS" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/Over2Cloud/PremiaCorporateServices/Dashboard/PCSDashboardHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+        <!-- Lead Dashboard 
+	 	<action name="viewLeadDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+			<result name="success">/view/Over2Cloud/CRM/LeadDashboard/viewLeadDashboardHeader.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>	-->
+        <!-- Sales Dashboard -->
+        <action name="mainpageShow" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/Over2Cloud/WFPM/ActivityPlanner/mainPageShow.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <!-- HCF Traker Dashbiard -->
+        <action name="viewPullReportDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/Over2Cloud/Text2Mail/PullReportDashboard/pullReportDashboard.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <!-- Marcom Dashbiard -->
+        <action name="beforeDashboardView" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/Over2Cloud/WFPM/CRM/Dashboard_Pages/marcom_dashboard.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+
+        <!-- CRM Dashboard -->
+        <action name="patientCloseActivityDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="viewConfDashboard">
+            <result name="success">/view/patientActivity/PatientCloseActivityDashboard.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="updateGridPos" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="updateGridPos">
+            <result name="success">/view/success.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+
+        <action name="fetchDashAddConfDetail" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchDashAddConfDetail">
+            <result name="success" type="json">
+                <param name="root">catDashConf1</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+
+        <action name="fetchDashAddConf" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchDashAddConf">
+            <result name="success">/view/Over2Cloud/ConfigureReport/DashAddConfiguration.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="dashboardSetting" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="dashboardSetting">
+            <result name="success">/view/Over2Cloud/ConfigureReport/configureDashboardSetting.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="fetchDetailsOfConfSetting" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchDetailsOfConfSetting">
+            <result name="success" type="json">
+                <param name="root">dasbboradBeforeSetting</param>
+            </result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="fetchDashboardName" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchDashboardName">
+            <result name="success" type="json">
+                <param name="root">commonJsonArr</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="settingConfDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="settingConfDashboard">
+            <interceptor-ref name="token" />
+            <interceptor-ref name="basicStack" />
+            <interceptor-ref name="defaultStack" />
+            <result name="invalid.token">/view/errorSubmit.jsp</result>
+            <result name="success" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="createConfDashboard" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="createConfDashboard">
+            <interceptor-ref name="token" />
+            <interceptor-ref name="basicStack" />
+            <interceptor-ref name="defaultStack" />
+            <result name="invalid.token">/view/errorSubmit.jsp</result>
+            <result name="success" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="removeTab" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="removeTab">
+            <result name="success" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="fetchBeforeWidgets" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchBeforeWidgets">
+            <result name="success">/view/Over2Cloud/ConfigureReport/homeScreenWidgetList.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="fetchWidgetHomeScreen" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchWidgetHomeScreen">
+            <result name="confPage" type="json">
+                <param name="root">catDashConf</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+
+        <action name="fetchWidgetAddConfDetail" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="fetchWidgetAddConfDetail">
+            <result name="success" type="json">
+                <param name="root">catDashConf1</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="createwidgetconf" class="com.Over2Cloud.ctrl.configureDashboard.ConfigureDashboard" method="createwidgetconf">
+            <result name="success" type="json">
+                <param name="root">successMessage</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        
+        
+        <!-- Feedback -->
+        <action name="feedbackHomeDashboard" class="com.Over2Cloud.ctrl.feedback.dashboard.FeedbackDashboardV" method="fetchWidgetHomeScreen">
+	<result name="success">/view/Over2Cloud/feedback/feedbackDashboardReport/ConfigDash/homeScreenWidget.jsp</result>
+	<result name="confPage" type="json"><param name="root">catDashConf</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+        
+        <!-- Feedback -->
+        
+    </package>
+</struts>

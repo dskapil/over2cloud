@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+  
+   <package name="incident" extends="struts-default,json-default" namespace="/view/Over2Cloud/incident">
+	  
+  <action name="beforeaddFeedbackIncident" class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="beforeaddFeedbackIncident">
+	<result name="success">/view/Over2Cloud/feedback/feedbackIncident/feedbackIncidentForm.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+
+ 	<action name="fetchPatientData"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="fetchPatientData">
+            <result name="pat">/view/Over2Cloud/feedback/feedbackIncident/feedbackIncidentPatientDetails.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+    <action name="fetchlocationforPatient"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="fetchlocationforPatient">
+            <result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="addFeedbackForIncidentData"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="addFeedbackForIncidentData">
+                <interceptor-ref name="token" /> 
+                <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="defaultStack"/>
+	<result name="success" type="json"><param name="root">successMessage</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="invalid.token">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+     </action>
+     
+     
+     <action name="viewIncidentHeader" class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="fetchIncidentHeaderPage">
+			<result name="success">/view/Over2Cloud/feedback/feedbackIncident/feedbackIncidentHeader.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+     
+    
+    
+    <action name="fetchInstantActivityBoard"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="fetchInstantActivityBoard">
+            <result name="success" type="json"><param name="root">incidentDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+ 
+ <action name="feedActionActivity"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="redirectToJSPActivity">
+            <result name="success">/view/Over2Cloud/feedback/feedbackIncident/feedIncidentAction.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+   </action>
+ 
+  <action name="actionOnIncident"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="updateFeedbackStatus">
+        	<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+           <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error" type="json"><param name="root">successMessage</param></result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <!-- incident vista -->
+     
+      <action name="viewIncidentVistaHeader" class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="viewIncidentVistaHeader">
+			<result name="success">/view/Over2Cloud/feedback/feedbackIncident/feedbackVistaIncidentHeader.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+     
+ 
+ <action name="fetchInstantVistaData"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="fetchInstantVistaData">
+            <result name="success" type="json"><param name="root">incidentDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+     <action name="feedActionforVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="feedActionforVista">
+             <result name="success">/view/Over2Cloud/feedback/feedbackIncident/feedIncidentVistaAction.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="actionOnIncidentVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackIncidentReport" method="actionOnIncidentVista">
+        	<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+           <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error" type="json"><param name="root">successMessage</param></result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+    
+	</package>
+    
+</struts>

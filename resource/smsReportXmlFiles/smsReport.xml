@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+
+  <package name="smsReport" extends="struts-default,json-default" namespace="/view/smsReport">
+
+     <action name="beforeSMSReport" class="com.Over2Cloud.ctrl.sms.report.SMSReport" method="beforeSMSReport" >
+           <result name="success">/view/Over2Cloud/smsReport/smsReportView.jsp</result>
+          <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+    </action>
+
+ <action name="viewSMSReport" class="com.Over2Cloud.ctrl.sms.report.SMSReport" method="viewSMSReport" >
+		<result name="success" type="json"><param name="root">masterViewList</param></result>
+          <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+    </action>
+     <action name="showforUpdateCommunication"  class="com.Over2Cloud.ctrl.sms.report.SMSReport" method="showforUpdateCommunication">
+            <result name="success" type="json"><param name="root">updatecommunication</param></result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+    <action name="updateCommunication"  class="com.Over2Cloud.ctrl.sms.report.SMSReport" method="updateCommunication">
+            <result name="success" type="json"><param name="root">updatecommunicationData</param></result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+         <action name="fetchCounterStatus"  class="com.Over2Cloud.ctrl.sms.report.SMSReport" method="fetchCounterStatus">
+            <result name="success" type="json"><param name="root">jsonArr</param></result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+  </package>
+</struts>
+

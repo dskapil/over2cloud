@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="commonAdminactionReason" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/ActionStatusReason">
+    
+    <action name="ViewReasonPage" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="createReasonView">
+	<result name="success">/view/Over2Cloud/Admin/actionStatusReason/viewReason.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	</action>
+
+	<action name="viewReasonAction" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="viewReason">
+	<result name="success" type="json"><param name="root">masterViewList</param></result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	</action>
+
+	<action name="createReasonAddPage" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="createReasonAddPage">
+	<result name="success">/view/Over2Cloud/Admin/actionStatusReason/createReason.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	</action>
+
+	<action name="reasonAddAction" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="reasonAddAction">
+	 <result name="success" type="json"><param name="root">successMSG</param></result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	</action>
+
+	<action name="modifyReasonModule" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="modifyReasonModule">
+	<result name="success" type="json"><param name="root">message</param></result>
+	<result name="login">/view/invalidSession.jsp</result><result name="error">/view/error.jsp</result>
+	</action>
+	
+	<action name="beforeModifyReasonModule" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="beforeModifyReasonModule">
+	<result name="success">/view/Over2Cloud/Admin/actionStatusReason/editReason.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	</action>
+	
+	
+	<action name="empDataempData" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="getActionStatusForMultiSelect">
+         <result name="success" type="json">
+            <param name="root">arrObj</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+	
+	<action name="viewReasonDataCounter" class="com.Over2Cloud.ctrl.admin.actionStatusReason.ActionStatusReason" method="viewReasonDataCounter">
+	<result name="success" type="json"><param name="root">jsonArr</param></result>
+	<result name="login">/view/invalidSession.jsp</result>
+	<result name="error">/view/error.jsp</result></action>
+
+	</package>
+</struts>

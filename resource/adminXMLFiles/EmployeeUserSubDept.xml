@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="commonAdminsubdept" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/EmployeeUserSubDept">
+     <action name="createSubDepartment"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="createSubDepartment">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="beforeSubDepartmentExistsSearch"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="checkSubDeptAvailability">
+             <result name="success">/view/success.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     									 
+     	 <action name="beforeSubDepartmentView"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="beforeSubDepartmentView">
+             <result name="success">/view/Over2Cloud/Admin/subDepartment/viewSubDept.jsp</result>
+             <result name="error">/view/error.jsp</result>
+               <result name="login">/view/invalidSession.jsp</result>
+         </action>
+    
+    <action name="viewSubDeptData"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="viewSubDeptData">
+               <result name="success" type="json"><param name="root">subDeptDataGridView</param></result>
+                <result name="error">/view/error.jsp</result>
+                <result name="login">/view/invalidSession.jsp</result>
+     </action>							
+      
+     
+    <!--   <action name="beforeSubDepartmentModify"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="beforeSubDepartmentModify">
+             <result name="success">/view/Over2Cloud/Admin/subDepartment/viewSubDept.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     
+     <action name="editSubDeptDataGrid"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="editSubDeptDataGrid">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action> -->
+        
+        
+       <!--  <action name="beforeSubDepartmentModify"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="beforeSubDepartmentModify">
+             <result name="success">/view/Over2Cloud/Admin/subDepartment/editSubDept.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action> -->
+     
+     
+     <action name="editSubDeptDataGrid"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="editSubDeptDataGrid">
+            <result name="success" type="json"><param name="root">successMsg</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     
+      <action name="beforesubdeptEdit"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="beforesubdeptAdd">
+             <result name="success">/view/Over2Cloud/Admin/subDepartment/editSubDept.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+      <action name="beforesubdeptAdd"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="beforesubdeptAdd">
+             <result name="success">/view/Over2Cloud/Admin/subDepartment/createSupdept.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="insertSubDeptData"  class="com.Over2Cloud.ctrl.admin.subDepartment.SubDepartmentAction" method="insertSubDeptData">
+            	 <result name="success" type="json"><param name="root">successMSG</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>   
+         
+         <!-- upload subDepartment  -->
+         <action name="beforeUploadSubDept" class="com.Over2Cloud.ctrl.admin.subDepartment.UploadSubDepartmentExcel" method="beforeUploadSubDept">
+			<result name="success">/view/Over2Cloud/Admin/subDepartment/uploadSupDept.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+         
+         <action name="uploadexcelfileSubDept" class="com.Over2Cloud.ctrl.admin.subDepartment.UploadSubDepartmentExcel" method="readExcelDataContent">
+			<result name="success" type="json"><param name="root">XYZ</param>
+			</result>
+		</action>
+		
+         <action name="confirmExcelSubDept">
+			<result name="success">/view/Over2Cloud/Admin/subDepartment/confirmSubDeptExcel.jsp</result>
+			</action>
+         
+         	<action name="showUploadSubDept" class="com.Over2Cloud.ctrl.admin.subDepartment.UploadSubDepartmentExcel" method="showUploadDept">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+         
+         <action name="saveExcelsubDept" class="com.Over2Cloud.ctrl.admin.subDepartment.UploadSubDepartmentExcel" method="saveExcelDept">
+			  <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="saveDeptsubDraft" class="com.Over2Cloud.ctrl.admin.subDepartment.UploadSubDepartmentExcel" method="saveDeptDraft">
+			<result name="success">/view/success.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+         
+	</package>
+</struts>

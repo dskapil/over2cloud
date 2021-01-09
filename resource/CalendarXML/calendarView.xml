@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="calendarDetail" extends="struts-default,json-default" namespace="/view/Over2Cloud/Calendar">
+		
+		<action name="beforeViewCalendarPage" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="beforeCalendarView">
+			<result name="success">/view/Over2Cloud/CalendarPages/beforeViewCalendarPage.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchCalendarData" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="fetchCalendarActivity">
+                <result name="success" type="json" ><param name="root">commonJsonArr</param></result>
+                <result name="error">/view/error.jsp</result>
+                <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="beforeTakeActionPage" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="beforeTakeActionPage">
+            <result name="success">/view/Over2Cloud/CalendarPages/calTakeAction.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="beforeDonePage" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="beforeDonePage">
+            <result name="success">/view/Over2Cloud/CalendarPages/beforeDonePage.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="beforeSchdulePage" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="beforeSchdulePage">
+            <result name="success">/view/Over2Cloud/CalendarPages/beforeReschdule.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+ 	<action name="addDone" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="addDone">
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+			<interceptor-ref name="basicStack"/>
+            <result name="success" type="json" ><param name="root">commonJsonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+                <result name="invalid.token">/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     
+     
+          <action name="addDoneValidation" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="addDoneValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action> 
+     
+     
+     <action name="addReschdule" class="com.Over2Cloud.ctrl.calendarDetail.CalendarActivity" method="addReschdule">
+      <interceptor-ref name="defaultStack"></interceptor-ref>  
+			<interceptor-ref name="basicStack"/>
+            <result name="success" type="json" ><param name="root">commonJsonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+                <result name="invalid.token">/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+     </action> 
+ 
+ 
+
+ 
+	</package>
+
+
+
+
+</struts>

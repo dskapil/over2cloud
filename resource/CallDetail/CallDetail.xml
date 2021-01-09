@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="callDetail" extends="struts-default,json-default" namespace="/view/Over2Cloud/CallDetail">
+		
+		<action name="viewMailContent"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM"   method="viewMailContent">
+		 <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+           <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+ <action name="beforeViewMyMailInbox"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="beforeViewMyMailInbox">
+         <result name="success">/viewBeforeMyMailBox.jsp</result>
+         <result name="error">/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+ </action>
+
+ <action name="viewMyMailInbox"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="viewMyMailInbox">
+         <result name="success">/viewMyMailBox.jsp</result>
+         <result name="error">/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+ </action>
+		
+		
+		
+		<action name="beforeUpload" class="com.Over2Cloud.ctrl.CallDetail.CallDetails" method="beforeUpload">
+			<result name="success">/view/Over2Cloud/callDetail/uploadExcel.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	  <action name="uploadexcelfile" class="com.Over2Cloud.ctrl.CallDetail.CallDetails" method="readExcel">
+			<result name="success">/view/Over2Cloud/callDetail/confirmExcel.jsp</result>
+			
+	</action>
+	
+	<action name="showUploadMobile"  class="com.Over2Cloud.ctrl.CallDetail.CallDetails" method="showUploadMobile">
+            <result name="success" type="json"></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="saveFbDraftExcel"  class="com.Over2Cloud.ctrl.CallDetail.CallDetails" method="saveExcelData">
+            <result name="success">/view/success.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	
+	<action name="beforeViewActivityBoard" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="beforeAnyActivity">
+			<result name="success">/view/Over2Cloud/callDetail/callDetailHeader.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+	
+	<action name="viewActivityBoardData" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="viewActivityBoardData">
+			 <result name="success" type="json"><param name="root">callDetailDataViewShow</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="viewActivityBoardDataCounter" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="viewActivityBoardDataCounter">
+	<result name="success" type="json"><param name="root">jsonarr</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+		
+		<!--
+		
+		 <action name="viewActivityBoardData"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="viewActivityBoardData">
+               <result name="success" type="json"></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+	
+	
+	--><!--downloadFormat-->
+	
+	 <action name="downloadFormat" class="com.Over2Cloud.ctrl.CallDetail.CallDetails" method="downloadFormat">
+           <result name="success" type="stream">
+			<param name="contentType">application/vnd.ms-excel</param>
+			<param name="inputName">excelStream</param>
+			<param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+			<param name="bufferSize">1024</param>
+			</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp
+			</result>
+   </action>
+   
+   <!--END Of downloadFormat-->
+   
+   <!-- Action Starts On Call Detail -->
+	
+	 <action name="beforeTakeActionOnCallDetail"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="beforeTakeActionOnCallDetail">
+         <result name="success">/view/Over2Cloud/callDetail/takeActionOnCallDetail.jsp</result>
+         <result name="Close">/view/Over2Cloud/callDetail/takeActionOnCallDetail.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+	 </action>
+	
+	
+	
+	  <action name="submitActionCallPicked"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="submitActionCallPicked">
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="callActionHistory"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="callActionHistory">
+         <result name="success">/view/Over2Cloud/callDetail/callActionHistory.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+	  </action>
+	
+	
+	
+	<!--  loction view  -->
+<action name="fetchLocationInfo" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="fetchLocationInfo">
+<result name="success" type="json"><param name="root">jssonArr</param></result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+   </action>
+	
+	<!-- end Of Action Call Detail -->
+	
+	
+	<!-- Reason master -->
+	
+	
+		
+		<action name="beforeViewReasonMaster" class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="beforeViewReasonMaster">
+            <result name="success" >/view/Over2Cloud/callDetail/reasonMasterView.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+       		 
+       		 <action name="dataOnLoadReasonMaster" class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="dataOnLoadReasonMaster">
+            <result name="success" >/view/Over2Cloud/callDetail/ReasonMasterGridView.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+		
+		 <action name="viewReasonMasterData"  class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="viewReasonMasterData">
+               <result name="success" type="json"></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="beforeReasonAdd"  class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="beforeReasonAdd">
+             <result name="success">/view/Over2Cloud/callDetail/addReasonForm.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addNewReason"  class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="addNewReason">
+         <result name="success">/view/success.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="editReasonMasterDataByGrid"  class="com.Over2Cloud.ctrl.CallDetail.ReasonMaster" method="editReasonMasterDataByGrid">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+	
+	<!-- excel download -->
+	
+	<action name="beforeCallDetailDownload" class="com.Over2Cloud.ctrl.CallDetail.ExcelDownloadOnCallDetail" method="fetchCurrentCallDetail" >
+           <result name="success">/view/Over2Cloud/callDetail/excelDownload.jsp</result>
+           <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   </action>
+	
+	
+      <action name="excelDownload" class="com.Over2Cloud.ctrl.CallDetail.ExcelDownloadOnCallDetail" method="excelDownload">
+		<result name="success" type="stream" >
+	             <param name="inputName">excelStream</param>
+	            <param name="contentType">application/octet-stream</param>
+	            <param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+	            <param name="bufferSize">2448</param>
+	            </result>
+	            <result name="error">/view/error.jsp</result>
+	             <result name="input">/view/error.jsp</result>
+	             <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+ 
+	    <action name="beforeCallDetailDashboard"  class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="beforeCallDetailDashboard">
+          <result name="success">/view/Over2Cloud/callDetail/callDetailDashboard.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+	
+	 <action name="fetchJsonDataForCallDetail" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="fetchJsonDataForCallDetail">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   	   </action>  
+   	   
+	 <action name="fetchJsonDataStatusWise" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="fetchJsonDataStatusWise">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   	   </action> 
+	   <action name="fetchDataViewForDataFor" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="fetchDataViewForDataFor">
+            <result name="success" >/view/Over2Cloud/callDetail/callDetailTableView.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   	   </action> 
+   	    <action name="pullReportCounterGridHeader" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="pullReportCounterGridHeader">
+         <result name="success">/view/Over2Cloud/callDetail/callDetailCouterGridHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+	     <action name="pullReportCounterGrid" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="pullReportCounterGrid">
+            <result name="success">/view/Over2Cloud/callDetail/callDetailCounterGrid.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	  <action name="viewcallDetailData"  class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="viewcallDetailData">
+               <result name="success" type="json"></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+	
+		<!-- Call Detail Counter  -->
+	<action name="activityBoardCounter" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="activityBoardCounter">
+		<result name="success" type="json"><param name="root">jsonArr</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+		<!-- End -->
+		
+		
+		 <action name="fetchTableViewForReasonBased" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="fetchTableViewForReasonBased">
+            <result name="success" >/view/Over2Cloud/callDetail/callDetailTableView.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   	   </action>
+   	   
+   	    <action name="fetchJsonDataReasonWise" class="com.Over2Cloud.ctrl.CallDetailDashboard.CallDetailDashboard" method="fetchJsonDataReasonWise">
+              <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   	   </action>
+  
+  <!-- call Details surgery Master by pintu 25-11-2016 -->
+	
+	<!--<action name="beforeViewSurgeryMaster" class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="beforeViewSurgeryMaster">
+            <result name="success" >/view/Over2Cloud/callDetail/callDetailSurgery/callDetailsSurgeryHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+       		 
+       		 <action name="dataOnLoadCallDetailsMaster" class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="dataOnLoadCallDetailsMaster">
+            <result name="success" >/view/Over2Cloud/callDetail/callDetailSurgery/callDetailsSurgeryGrid.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+		
+		 <action name="viewCallDetailsSergeryData"  class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="viewCallDetailsSergeryData">
+               <result name="success" type="json"></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="beforeCDSMAdd"  class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="beforeCDSMAdd">
+             <result name="success">/view/Over2Cloud/callDetail/callDetailSurgery/beforeAddSurgeryMaster.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addCDSM"  class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="addCDSM">
+         <result name="success">/view/success.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="editCDSMDataByGrid"  class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="editCDSMDataByGrid">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="checksurgery"  class="com.Over2Cloud.ctrl.CallDetail.CallDetailsSurgeryMaster" method="checkSurgeryCode">
+            	<result name="success" type="json">
+			<param name="root">checkCont</param>
+		</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>   
+     
+     -->
+     <!-- MAaster FOr PDM -->
+     
+     <action name="beforeViewSurgeryMaster" class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="beforeViewSurgeryMaster">
+            <result name="success" >/view/Over2Cloud/callDetail/call_discharge_setting/call_setting_header.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+       		 
+		 <action name="viewCallDetailsSergeryData"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="viewCallDetailsSergeryData">
+               <result name="success" type="json"><param name="root">surgeryDataView</param></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="beforeCDSMAdd"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="beforeCDSMAdd">
+             <result name="success">/view/Over2Cloud/callDetail/call_discharge_setting/beforeAddSettingCall.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addCDSM"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="addCDSM">
+         <result name="success">/view/success.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="editCDSMDataByGrid"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="editCDSMDataByGrid">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="checksurgery"  class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="checkSurgeryCode">
+            	<result name="success" type="json">
+			<param name="root">checkCont</param>
+		</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>   
+        <action name="checkPatType" class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="checkPatType">
+           <result name="success" type="json">
+                <param name="root">patTypeMap</param>
+           </result>
+           <result name="error">/view/common_pages/error.jsp</result>
+           <result name="login">/view/common_pages/invalidSession.jsp</result>          
+     </action>
+     
+     
+     <action name="viewEscalation" class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="viewEscalation">
+			<result name="success" >/view/Over2Cloud/callDetail/call_discharge_setting/viewEscalationMatrix.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+		 <action name="showTicketHistory"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="showTicketHistory">
+            <result name="success">/view/Over2Cloud/callDetail/showOutbondTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+		
+		<!-- pintu -->
+		<action name="callDetailDeleteMasterData" class="com.Over2Cloud.ctrl.CallDetail.CallSettingPDM" method="deleteMasterData">
+			<result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+     </action>
+     
+     <!-- End of PDM MAster -->
+	 	<action name="fetchAllotTo"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="fetchAllotTo">
+        	<result name="success" type="json"><param name="root">commonJSONArray</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>  
+ 
+ 
+ <action name="fetchAllotTo"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="fetchAllotTo">
+        	<result name="success" type="json"><param name="root">commonJSONArray</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+     </action>  
+ 
+	 <action name="fetchdept"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="fetchdept">
+        	<result name="success" type="json"><param name="root">jssonArr</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="patientTicketHistory"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="patientTicketHistory">
+        	<result name="success">/view/Over2Cloud/callDetail/callActionHistory.jsp</result>
+         <result name="Close">/view/Over2Cloud/callDetail/callActionHistory.jsp</result>
+         <result name="error">/view/error.jsp</result>
+	    <result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     <action name="patientEpisodeHistory"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="patientEpisodeHistory">
+		<result name="success" type="json"><param name="root">detailDataView</param></result>
+         <result name="error">/view/error.jsp</result>
+	    <result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     <action name="viewHistory"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="viewHistory">
+		<result name="success" type="json"><param name="root">detailDataView</param></result>
+         <result name="error">/view/error.jsp</result>
+	    <result name="login">/view/invalidSession.jsp</result>
+     </action> 
+     
+     
+<action name="patientTicketHistory11" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="patientTicketHistory">
+			<result name="success">/view/Over2Cloud/callDetail/feedbackTicketHistorywithDetails.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action> 
+ 
+	<action name="beforeAppreciationAdd" class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="beforeAppreciationAdd">
+			<result name="success">/view/Over2Cloud/callDetail/addAppreciationViaCall.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+		
+		  <action name="submitActionCallPickedAppre"  class="com.Over2Cloud.ctrl.CallDetail.ActivityBoardCallDetail" method="submitActionCallPicked">
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+ 
+ 
+	</package>
+
+
+
+
+</struts>

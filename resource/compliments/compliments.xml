@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="compliments" extends="struts-default,json-default" namespace="/view/Over2Cloud/compliments">
+
+		 <action name="ComplimentsPieJsonData"   class="com.Over2Cloud.compliments.complimentDashboard" method="ComplimentsPieJsonData" >
+      		 <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action> 
+		
+			<action name="showGraphCompliments" class="com.Over2Cloud.compliments.complimentDashboard" method="showGraphCompliments">
+			 <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="fetchDashboardCommonAction" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDashboardCommonAction">
+			<result name="Compliments-data">/view/Over2Cloud/complimentsDashboard/feedbackDashboardCompliments.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+</struts>

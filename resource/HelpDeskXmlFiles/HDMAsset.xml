@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <constant name="struts.devMode" value="false" />
+   <!--
+Package Start for Ticket Series
+-->
+   <package name="helpDesk/Asset" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/Asset">
+     
+<!-- chandan prasad   Asset-->
+
+   <action name="beforeAssetView" class="com.Over2Cloud.ctrl.helpdesk.Asset.Assetconfigure" method="beforeAssetView">
+         <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Asset/Asset.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+
+
+ <action name="viewAssetData" class="com.Over2Cloud.ctrl.helpdesk.Asset.Assetconfigure" method="viewAssetData">
+         <result name="success" type="json">
+            <param name="root">ticketSeriesData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+
+  <action name="DeleteAssetdata" class="com.Over2Cloud.ctrl.helpdesk.Asset.Assetconfigure" method="editAssetData">
+         <result name="success" type="json" />
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="beforeEditAsset" class="com.Over2Cloud.ctrl.helpdesk.Asset.Assetconfigure" method="beforeEditAsset">
+        <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Asset/EditAsset.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      <action name="editAssetDataGrid" class="com.Over2Cloud.ctrl.helpdesk.Asset.Assetconfigure" method="editAssetDataGrid">
+			<result name="success" type="json">
+				<param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+      
+
+   <action name="beforeuploadAssetExcel" class="com.Over2Cloud.ctrl.helpdesk.Asset.AssetExcelUpload" method="beforeuploadAssetExcel">
+			<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Asset/uploadAsset.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="uploadexcelfileSubDept" class="com.Over2Cloud.ctrl.helpdesk.Asset.AssetExcelUpload" method="readExcelDataContent">
+			<result name="success" type="json"><param name="root">XYZ</param>
+			</result>
+		</action>
+		 <action name="confirmExcelAsset">
+			<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Asset/confirmAssetExcel.jsp</result>
+			</action>
+			
+				<action name="showUploadAsset" class="com.Over2Cloud.ctrl.helpdesk.Asset.AssetExcelUpload" method="showUploadDept">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+			  <action name="saveExcelAsset" class="com.Over2Cloud.ctrl.helpdesk.Asset.AssetExcelUpload" method="saveExcelAsset">
+			  <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="saveDeptsubDraft" class="com.Over2Cloud.ctrl.helpdesk.Asset.AssetExcelUpload" method="saveDeptDraft">
+			<result name="success">/view/success.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+			
+		</package>
+</struts>

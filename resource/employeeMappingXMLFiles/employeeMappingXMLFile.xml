@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="employeeMapping" extends="struts-default,json-default" namespace="/view/Over2Cloud/employeeMapping">
+
+<action name="beforeEmployeeMappingView"  class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="beforeEmployeeMappingView">
+	          <result name="success">/view/Over2Cloud/employeeMappingOver2Cloud/employeeMappingView.jsp</result>
+			  <result name="error">/view/error.jsp</result>
+			  <result name="login">/view/invalidSession.jsp</result>
+	     </action>
+        <action name="employeeMappingView" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="employeeMappingView">
+	        <result name="success" type="json"><param name="root">viewEmployeeMapping</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+     <action name="beforeAddEmployeeMapping" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="beforeAddEmployeeMapping">
+	          <result name="success">/view/Over2Cloud/employeeMappingOver2Cloud/employeeMappingViewAdd.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="addEmployeeMapping" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="addEmployeeMapping">
+	<result name="success" type="json"><param name="root">successMSG</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="FetchmappingDept" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="fatchConcernDept">
+         <result name="success">//view/Over2Cloud/employeeMappingOver2Cloud/deparment.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="fetchempyeeFor" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="fetchempyeeFor">
+         <result name="success" type="json">
+            <param name="root">arrObject</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="modifyemployeeMapping" class="com.Over2Cloud.ctrl.employeeMapping.employeeMappingView" method="deleteEmployeeMapping">
+	<result name="success" type="json"><param name="root">successMsg</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+      
+      
+      
+     <!-- Escalation log -->
+     <action name="beforeEmployeeMappingView"  class="com.Over2Cloud.ctrl.escalationMapping.escalationMappingView" method="beforeEscalationMappingView">
+	          <result name="success">/view/Over2Cloud/escalationMappingview/escalationMappingview.jsp</result>
+			  <result name="error">/view/error.jsp</result>
+			  <result name="login">/view/invalidSession.jsp</result>
+	     </action>
+     
+  <action name="escalationMappingView" class="com.Over2Cloud.ctrl.escalationMapping.escalationMappingView" method="escalationMappingView">
+	        <result name="success" type="json"><param name="root">viewEmployeeMapping</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+     
+     
+      <!--  -->
+      
+      
+      
+      
+    
+		
+     </package>
+</struts>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="pdm/kisok" extends="struts-default,json-default" namespace="/view/Over2Cloud/feedback/KioskWebForm">
+
+     <action name="searchPatient"  class="com.Over2Cloud.ctrl.feedback.KioskWebForm" method="searchPatient">
+          <result name="success" type="json"><param name="root">jsonArray</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="addFeedbackDataViaPaper" class="com.Over2Cloud.ctrl.feedback.KioskWebForm" method="addFeedbackViaPaper">
+			<result name="success" type="json"><param name="root">arr</param></result>
+			<result name="kioskthankspage">/view/Over2Cloud/feedback/thankyouPageKiosk.jsp</result>
+			<result name="exists">/view/Over2Cloud/feedback/feedbackFormAlreadyExists.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+     
+      <action name="searchFeedAction"  class="com.Over2Cloud.ctrl.feedback.KioskWebForm" method="searchFeedAction">
+          <result name="success" type="json"><param name="root">jsonArray</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="fetchQuestion"  class="com.Over2Cloud.ctrl.feedback.KioskWebForm" method="fetchQuestion">
+          <result name="success" >/view/Over2Cloud/feedback/kiosk_pages/questionKiosk.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addFeedbackData111"  class="com.Over2Cloud.ctrl.feedback.KioskWebForm" method="addFeedbackData111">
+          <result name="success" >/view/Over2Cloud/feedback/kiosk_pages/thankpage.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+    
+   	
+     
+</package>
+</struts>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false"/>
+	<package name="IFSLocation" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/IFSLocation">
+	
+	
+		 <!--  Create by Mohit -->
+        <action name="getHeaderBeforeViewForIFSLocation" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="getHeaderBeforeViewForIFSLocation">
+         <result name="success">/view/Over2Cloud/feedback/IFSLocation/beforeViewAddIFSLocation.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      
+      <action name="viewIFSLocation" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="viewIFSLocation">
+         <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+        <action name="beforeAddLocation" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="beforeAddLocation">
+         <result name="success">/view/Over2Cloud/feedback/IFSLocation/createLocation.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+         <action name="addLoation" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="addLoation">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      <action name="beforeEditLocationPage" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="beforeEditLocationPage">
+          <result name="success">/view/Over2Cloud/feedback/IFSLocation/editLocation.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+          <action name="editLocation" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="editLocation">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      
+       <action name="deleteLocationMasterData" class="com.Over2Cloud.ctrl.feedback.master.IFSLocation" method="deleteLocationMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action> 
+      
+    
+		
+	</package>
+</struts>

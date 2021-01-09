@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="que" extends="struts-default,json-default" namespace="/view/Over2Cloud/questionnaireConfig">
+		
+		<action name="beforeQuestionAdd"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="beforeQuestionAdd">
+		 <result name="success">/view/Over2Cloud/questionnaireConfig/addQuestioinForm.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="editOneQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="beforeEditOneQuestion">
+	 <result name="success">/view/Over2Cloud/questionnaireConfig/editQuestioinForm.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+	</action>
+		
+			<action name="addQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="addQuestion">
+			 <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+         	    <result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				  <result name="invalid.token">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+      </action>
+
+      
+      	<action name="getDataForQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="getDataForQuestion">
+		 <result name="success">/view/Over2Cloud/questionnaireConfig/showQuestion.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 	<!--<action name="ticketfor"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="ticketfor">
+		 <result name="success">/view/Over2Cloud/questionnaireConfig/answerDD.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		--><action name="ticketfor"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="ticketfor">
+	 <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+           <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+	</action>
+		
+		<action name="setQuestionConfigDet"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="setQuestionConfigDet">
+		 <result name="success" >/view/Over2Cloud/questionnaireConfig/paperForm.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	
+	<action name="editViewPropertySetter"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig"   method="editViewPropertySetter">
+		 <result name="success" >/view/Over2Cloud/questionnaireConfig/ViewQuestionGrid.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		     <action name="viewQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="viewQuestion">
+               <result name="success" type="json"></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="modifyQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="modifyQuestion">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+		<!-- Upload of Question -->
+		  
+      <action name="beforeuploadExcelQuestion"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="beforeuploadExcelQuestion">
+            	<result name="success">/view/Over2Cloud/questionnaireConfig/uploadQuestions.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+<!--       <action name="uploadExcelQuestion" class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="uploadExcelQuestion">
+	 <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+				<result name="error">/view/error.jsp</result>         
+            <result name="login" >/view/common_pages/invalidSession.jsp</result>
+     </action> -->
+      <action name="uploadExcelQuestion" class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="uploadExcelQuestion">
+                       <result name="success" type="chain">saveFbDraftExcel</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="saveFbDraftExcel"  class="com.Over2Cloud.Questionnaire.QuestionnaireConfig" method="saveExcelData">
+            <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	
+	
+     <!-- AUTO NFA CHANDAN PRASAD  -->
+     
+     
+     <action name="beforeQuestionAddNFA"  class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa"   method="beforeQuestionAddNfa">
+		 <result name="success">/view/Over2Cloud/questionnaireConfigNfa/addNfaQuestioinForm.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+		</action>
+     
+     
+     <action name="addNFAquestion" class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="addNFAquestion">
+	<result name="success" type="json"><param name="root">successMSG</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     
+      <action name="fetchNPSdata" class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="fetchNPSdata">
+         <result name="success">/view/Over2Cloud/questionnaireConfigNfa/autoNFAmultiselect.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+    
+    <action name="mappingViewNfa" class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="mappingViewNfa">
+	      <result name="success" type="json"><param name="root">viewEmployeeMapping</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+    
+    
+    
+     <action name="deleteMappingNfa" class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="deleteMappingNfa">
+	<result name="success" type="json"><param name="root">successMsg</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+     <action name="beforEditEmployeeNfa" class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="beforEditEmployeeNfa">
+	          <result name="success">/view/Over2Cloud/questionnaireConfigNfa/MappingEditNfa.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     <action name="EditNFAquestion"  class="com.Over2Cloud.QuestionnaireNfa.QuestionnaireConfigNfa" method="EditNFAquestion">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+     
+    
+	
+	
+		</package>
+		</struts>

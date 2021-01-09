@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+
+  <package name="admin/manageContact" extends="struts-default,json-default" namespace="/view/Over2Cloud/admin/manage">
+
+<action name="fetchOrg" class="com.Over2Cloud.ctrl.compliance.MapContact"  method="fetchOrg">
+<result name="success">/view/Over2Cloud/Admin/adminMSOrgList.jsp</result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action> 
+ 	
+ 	
+ 	<action name="employeeLevelRemove"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="employeeLevelRemove">
+          <result name="success" type="json"><param name="root">successMessage</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="employeeLevelChange"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="employeeLevelChange">
+          <result name="success" type="json"><param name="root">successMessage</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+    <action name="fetchContactMap"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchContactMap">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="fetchDepList"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchDepList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="fetchEmployeeList"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchEmployeeList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchEmpDetails"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchEmpDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <!-- <action name="fetchMapEmployee"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchMapEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action> -->
+     <action name="mappedEmployee"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="mappedEmployee">
+          <result name="success" type="json"><param name="root">successMessage</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="deleteMapEmployee"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="deleteMapEmployee">
+           <result name="success" type="json"><param name="root">successMessage</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchEmployeeLevel"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchEmployeeLevel">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchEmployeeLevelDetails"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchEmployeeLevelDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchDetailsMappingEmployee"  class="com.Over2Cloud.ctrl.compliance.MappingLevel" method="fetchDetailsMappingEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+    <action name="fetchMapContact"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchFloorWingsDetail">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="fetchDepartmentList"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchDepartmentList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="BeforeConfigEscContactMap"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchEmployeebydept">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="fetchSkillDetails"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchSkillDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchMappedEmployee"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchMappedEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="deleteMapping"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="deleteMapping">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchMappedManageContactEmployee"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchMappedManageContactEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchMappedManageDepartment"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchMappedManageDepartment">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/multiselectDepartmentDD.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchEmpLevelDetails"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="fetchEmpLevelDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="levelChange"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="levelChange">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="levelAdd"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="levelAdd">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="mapEmployee"  class="com.Over2Cloud.ctrl.compliance.MapContact" method="addShiftWithWingMapSave">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <!-- drag drop wing mapping --> 
+      <action name="addEscContactConfig1"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="addEscContactConfig">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="fetchSearchedEmployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchSearchedEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchMappedManageContactEmployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchMappedManageContactEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="depatmentsforlist"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchAlldept">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getEmployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="getmappedemployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchMappedEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="deleteEmpByTrash"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="deleteEmpByTrashMethod">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getDeptfloorWingDetail"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchDeptRoomFloorDetail">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <!-- end -->
+     
+     <action name="getEmployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="getEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="checkEscLevel"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="checkEscLevel">
+          <result name="success" type="json"><param name="root">floorMap</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="addEscContactConfig"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="addEscContactConfig">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="viewEscContct"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="viewEscContct">
+          <result name="success" type="json"></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getGriddata"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchEscDeptNew">
+          <result name="success" type="json"></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="editEscContct"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="editEscContct">
+          <result name="success" type="json"></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="saveEmpWing"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="saveEmpWing">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/saveEmpWing.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addShiftWithWingMap"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="addShiftWithWingMap">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+        <action name="addShiftWithWingMapSave"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="addShiftWithWingMapSave">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+       <action name="viewShift"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="viewShift">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="editEscalationDept"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="editEscalationDept">
+          <result name="success" type="json"></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="deleteShift"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="deleteShift">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="editShiftTime"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="editShiftTime">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="getSkillDetails"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchSkillDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+    <action name="uploadContacts"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="uploadContacts">
+          <result name="success" type="json"><param name="root">successMessage</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+     </action>
+    
+    <!-- vipin's work for manage Escalation -->
+      <action name="beforeAddMappUser" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction"  method="beforeAddMappUser">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/addMappUser.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ </action> 
+    
+    <action name="fetchEmployee"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="fetchEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+    
+    <action name="submitAddMappedUserServerValidation"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="submitAddMappedUserServerValidation">
+           <result name="success" type="json"><param name="root">message</param> </result>
+        <!--  <result name="success">/view/success.jsp</result> -->
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+    
+      <action name="submitAddMappedUser"  class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="submitAddMappedUser">
+          <interceptor-ref name="basicStack"/>
+         <interceptor-ref name="token" /> 
+           <result name="success" type="json"><param name="root">message</param> </result>
+        <!--  <result name="success">/view/success.jsp</result> -->
+		 <result name="error">/view/error.jsp</result>
+		 <result name="invalid.token">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+    
+    <action name="beforeDeleteMappUser" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction"  method="beforeDeleteMappUser">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/deleteMapUser.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ </action> 
+    
+    <action name="deleteMappuser" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction"  method="deleteMappuser">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ </action> 
+ 
+ 
+ <!-- Excel Upload by Mohit Thakur -->
+ <action name="beforeUploadMapEscalationSuperAdmin" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="beforeUploadMapEscalationSuperAdmin">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/beforViewExcelUploadMapEscalation.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="uploadexcelfileMapEscalation" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="uploadexcelfileMapEscalation">
+			<result name="success" type="json">
+				<param name="root">XYZ</param>
+			</result>
+		</action>
+		
+		 <action name="MapEscalation_ExcelView" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="MapEscalation_ExcelView">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/confirmMapEscalationView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showUploadMapEscalation" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="showUploadMapEscalation">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="showUploadMapEscalation" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="showUploadMapEscalation">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+ <action name="saveMapEscalationExcle" class="com.Over2Cloud.ctrl.admin.primaryContact.ContactManagementAction" method="saveMapEscalationExcle">
+		  <result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+ 
+ <action name="beforeManageContactHistory" class="com.Over2Cloud.ctrl.admin.primaryContact.ManageContactHistory"  method="beforeManageContactHistory">
+			<result name="success">/view/Over2Cloud/Admin/manageContact/viewManageContactHistory.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ </action> 
+ 
+<action name="viewManageContactHistory"  class="com.Over2Cloud.ctrl.admin.primaryContact.ManageContactHistory" method="viewManageContactHistory">
+         <result name="success" type="json"><param name="root">masterViewList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+</action> 
+     
+     
+ 
+    <!-- end -->
+  </package>
+</struts>

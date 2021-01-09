@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="false"/>
+	<package name="SeekApproval" extends="strutsbeforeSeekApproval-default,json-default" namespace="/view/Over2Cloud/SeekApproval">
+	
+		<action name="beforeSeekApproval" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="getData4SeekApproval">
+			<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApproval/BeforeApproval.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		<action name="ApprovalAction" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="seekApprove">
+			<result name="success">/view/success.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		<action name="beforeViewSeekApproval"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="beforeViewSeekApproval">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApproval/BeforeViewSeekApproval.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="beforeTakeActionSeekApprovalRequest"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="beforeTakeActionSeekApprovalRequest">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApproval/BeforeSeekApprovalTakeAction.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+       <action name="actionOnSeekApproval" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="actionOnSeekApproval">
+        	<result name="success" type="json"><param name="root">msg</param></result>
+			<result name="login">/view/invalidSession.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+     	
+     	<!--
+     
+      	<action name="beforeViewSeekApprovalInGrid"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="beforeViewSeekApprovalInGrid">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApproval/ViewSeekApproval.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	-->
+     	
+     	
+     	<action name="ViewSeekApproval"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="viewSeekApproval">
+            <result name="success" type="json"><param name="root">masterViewList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="fetchSeekApprovalCounter"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="fetchSeekApprovalCounter">
+            <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="getDocPath"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="getActualDocPath">
+            <result name="success" type="json"><param name="root">docPathName</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="downloadDoc" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApproval" method="docDownload" >
+           <result name="success" type="stream">
+             <param name="contentType">application/octet-stream</param>
+             <param name="inputName">fileInputStream</param>
+             <param name="contentDisposition">attachment;filename=%{fileName}</param>
+             <param name="bufferSize">4096</param>  </result>
+           <result name="error">/view/common_pages/error.jsp</result>
+           <result name="login">/view/common_pages/invalidSession.jsp</result>
+   </action>
+	
+	<!-- Seek Approval Contact by Pintu 11_oct_17 -->
+		
+	<action name="beforeViewSeekApprovalContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="beforeViewSeekApprovalContact">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/beforeSeekApprovalContactViewHeader.jsp</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="beforeAddSeekApprovalContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="beforeAddSeekApprovalContact">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/beforeAddSeekApprovalContact.jsp</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="viewSeekApprovalContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="viewSeekApprovalContact">
+            <result name="success" type="json"><param name="root">masterViewList</param></result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="addSeekApprovalContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="addSeekApprovalContact">
+            <result name="success" type="json"><param name="root">data</param></result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="fetchUserList"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetchUserList">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/employeeData.jsp</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="fetchDeptList"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetchDeptList">
+            <result name="success" type="json"><param name="root">jsonArrayData</param></result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="beforeModifySeekAppContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="beforeModifySeekAppContact">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/modifySeekAppContact.jsp</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="modifySeekAppContact"  class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="modifySeekAppContact">
+            <result name="success" type="json"><param name="root">data</param></result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<!-- Fatch the orgnazation name for o level user by surj 24-06-2019 -->
+     	<action name="fetchOrgnization" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetchOrgnization">
+<result name="success" type="json"><param name="root">sheekJSONArray</param></result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+
+     	<action name="fatchddept" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fatchddept">
+<result name="success" type="json"><param name="root">deptJSONArray</param></result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+
+<action name="fetchFromdept" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetchFromdept">
+<result name="success" type="json"><param name="root">deptJSONArray</param></result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+
+<action name="fetchemployee" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetchemployee">
+<result name="success" type="json"><param name="root">deptJSONArray</param></result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+     	
+     	<action name="fatchdfromdept" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fatchdfromdept">
+<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/seekDeptList.jsp</result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+
+<action name="fetcHeaderDD" class="com.Over2Cloud.ctrl.helpdesk.seekApproval.SeekApprovalContact" method="fetcHeaderDD">
+<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/SeekApprovalMaster/headerDeptD.jsp</result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+</action>
+	
+     	
+		<!-- End Seek Approval Contact -->
+		
+	</package>
+	
+</struts>

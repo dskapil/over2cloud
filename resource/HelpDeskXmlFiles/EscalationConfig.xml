@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="helpDesk/escconf" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf">
+
+
+<!-- start Manage Escalation -->
+	<action name="beforeManageEscGridHeader"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeManageEscGridHeader">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/beforeManageEscHeader.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="fetchManageEscDeptData"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchManageEscDeptData">
+          <result name="success" type="json"><param name="root">masterViewList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+	<action name="BeforeConfigEsc"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeConfigEsc">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/CreateEscConfig.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="fetchDeppartmentList"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchDeppartmentList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="fetchSubDeppartmentList"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchSubDeppartmentList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="beforeCreateEscConfigEdit"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeCreateEscConfigEdit">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/CreateEscConfigEdit.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="editEscalationDept"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="editEscalationDept">
+          <result name="success" type="json"><param name="root">msg</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     <!-- End Manage Escalation -->
+     
+     
+     
+     
+     <action name="addEscConfig"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="addEscConfig">
+          <result name="success" type="json"><param name="root">msg</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+     <action name="BeforeConfigEscContact"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeConfigEscContact">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/CreateEscContactConfig.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <!-- drag drop wing mapping --> 
+      <action name="addEscContactConfig1"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="addEscContactConfig">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="BeforeConfigEscContact1"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchEmployeebydept">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getfloorwingsdetail"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchFloorWingsDetail">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getshiftdatedetail"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchshiftdatedetail">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="Corporate"  class="com.Over2Cloud.ctrl.helpdesk.feeddraft.EditFeedbackDraft" method="Corporate">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="depatmentsforlist"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchAlldept">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="getEmployee"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="getmappedemployee"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchMappedEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="addShiftWithEmpDate"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="addShiftWithEmpDate">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="deleteEmpByTrash"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="deleteEmpByTrashMethod">
+          <result name="success" type="json"><param name="root">message</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="getDeptfloorWingDetail"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchDeptRoomFloorDetail">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <!-- end -->
+     
+     <action name="getEmployee"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="getEmployee">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="checkEscLevel"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="checkEscLevel">
+          <result name="success" type="json"><param name="root">floorMap</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="addEscContactConfig"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="addEscContactConfig">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="viewEscContct"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="viewEscContct">
+          <result name="success" type="json"></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <!--<action name="getGriddata"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchEscDeptNew">
+          <result name="success" type="json"></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     -->
+     <action name="editEscContct"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="editEscContct">
+          <result name="success" type="json"></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="saveEmpWing"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="saveEmpWing">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/saveEmpWing.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="addShiftWithWingMap"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.MapShiftWIthWings" method="addShiftWithWingMap">
+           <result name="success" type="json"><param name="root">message</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+        <action name="addShiftWithWingMapSave"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.MapShiftWIthWings" method="addShiftWithWingMapSave">
+          <result name="success">/view/success.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="viewShift"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="viewShift">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="deleteShift"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="deleteShift">
+          <result name="success" type="json"><param name="root">message</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="editShiftTime"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="editShiftTime">
+         <result name="success" type="json"><param name="root">message</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="getSkillDetails"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchSkillDetails">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="confMapResourcepage"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="confMapResourcepage">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/dragdrop2.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <!-- Chandan Merge Roaster -->
+     
+     
+     
+     
+     
+     <action name="confMapShiftEmp"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="confMapResourcepage">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/escshiftmapping.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+
+		<action name="viewShift"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="viewShift">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="fetchLiveShift"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchLiveShift">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	
+
+		<action name="fetchEmpforShiftDate"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchEmpforShiftDate">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+	<action name="showmonthlyChartforDepartment"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="showmonthlyChartforDepartment">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/beforeEscShiftMappingView.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="viewShiftMappingEmployee"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="viewShiftMappingEmployee">
+         <result name="success" type="json"><param name="root">viewesclist</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="deletempShift"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="deletempShift">
+         <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+
+	 <action name="beforeUploadRoaster"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeUploadRoaster">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/uploadRoaster.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+    
+    
+    <action name="uploadroasterexcelfile" class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="uploadExcel">
+			 <result name="success" type="chain">saveRoasterExcel</result>
+            <result name="error" >/view/common_pages/error.jsp</result>
+            <result name="login" >/view/common_pages/invalidSession.jsp</result>
+			
+	</action>
+	
+	<action name="saveRoasterExcel"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="saveExcelData">
+            <result name="success" type="json"><param name="root">jsonList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+
+   <action name="deleteRoster"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="deleteRoster">
+          <result name="success" type="json"><param name="root">message</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="beforeRosterUpload"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="beforeRosterUpload">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/uploadRoasterEmployee.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="rosterUpload"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="rosterUpload">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Escalation_Conf/confirmRoasterEmployee.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="fetchRosterConfirmView"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="fetchRosterConfirmView">
+          <result name="success" type="json"><param name="root">viewesclist</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     <action name="saveRosterEmployeeData"  class="com.Over2Cloud.ctrl.helpdesk.EscalationConfig.EscalationConfigAction" method="saveRosterEmployeeData">
+          <result name="success" type="json"><param name="root">message</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    
+<!-- ************************************** Employee Roaster start 03-09-2019 ****************************************************************** -->
+
+	<action name="beforeEmpRoasterHeader"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeEmpRoasterHeader">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeEmployeeRoasterHeader.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	
+	<action name="beforeEmpRoasterGridView"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeEmpRoasterGridView">
+          <result name="success" type="json"><param name="root">gridData</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="beforeEmpRoasterGridData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeEmpRoasterGridData">
+          <result name="success" type="json"><param name="root">gridData</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+
+	<action name="beforeEmpRoasterAdd"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeEmpRoasterAdd">
+           <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeEmployeeRoasterAdd.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	<action name="addEmpRoasterData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="addEmpRoasterData">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	<action name="fetchEmployeeList"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchEmployeeList">
+          <result name="success" type="json"><param name="root">empList</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    	<action name="fetchOldMappedShiftIds"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchOldMappedShiftIds">
+          <result name="success" type="json"><param name="root">shiftIDs</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="fetchWingsList"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchWingsList">
+          <result name="success" type="json"><param name="root">floorList</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    
+	<action name="beforeEmpRoasterEdit"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeEmpRoasterEdit">
+           <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeEmployeeRoasterEdit.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	<action name="fetchShiftList"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchShiftList">
+          <result name="success" type="json"><param name="root">shiftList</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="fetchEmployeeDetails"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchEmployeeDetails">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/fetchEmpDetails.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	<action name="updateEmpRoasterData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="updateEmpRoasterData">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="empRoasterDelete"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="empRoasterDelete">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	<action name="beforeUploadEmpRoaster"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeUploadEmpRoaster">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeEmployeeRoasterUpload.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="uploadRoasterEmployee"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="uploadRoasterEmployee">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action> 
+<action name="fetchSubDeptList"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="fetchSubDeptList">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/fetchSubDepartmentList.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+
+	<!-- Shift work -->
+
+	<action name="beforeShifViewData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeShifViewData">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeShiftHeader.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+	
+	<action name="shifViewData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="shifViewData">
+          <result name="success" type="json"><param name="root">shiftData</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="beforeShiftAdd"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeShiftAdd">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeAddShift.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="addShiftData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="addShiftData">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="checkDeuplicateShift"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="checkDeuplicateShift">
+          <result name="success" type="json"><param name="root">shiftValue</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="beforeShiftEdit"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="beforeShiftEdit">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/EmployeeRoaster/beforeEditShift.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="updateShiftData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="updateShiftData">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     <action name="deleteShiftData"  class="com.Over2Cloud.ctrl.helpdesk.roaster.EmployeeRoaster" method="deleteShiftData">
+          <result name="success" type="json"><param name="root">msg</param> </result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+
+
+
+
+</package>
+</struts>
