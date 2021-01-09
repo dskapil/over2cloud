@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="ConfigureDashbaord" extends="struts-default,json-default" namespace="/view/Over2Cloud/ConfigureDashbaord">
+
+<action name="beforeConfigureDashbaordView"  class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="beforeConfigureDashbaordView">
+	          <result name="success">/view/Over2Cloud/feedback/master/ConfigureDashboardMapping/ConfigureDashboardView.jsp</result>
+			  <result name="error">/view/error.jsp</result>
+			  <result name="login">/view/invalidSession.jsp</result>
+	     </action>
+     
+     <action name="beforeAddConfigureDashbaordUpdate" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="beforeAddConfigureDashbaordUpdate">
+	          <result name="success">/view/Over2Cloud/feedback/master/ConfigureDashboardMapping/ConfigureDashboardMappingViewAdd.jsp</result>
+	          
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+       
+     <action name="configureDashbaordView" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="configureDashbaordView">
+	        <result name="success" type="json"><param name="root">viewEmployeeMapping</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+    
+     
+     <action name="addConfigureDashbaord" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="addConfigureDashbaord">
+	<result name="success" type="json"><param name="root">successMSG</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     
+    <action name="FetchmappingDept" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="fatchConcernDept">
+         <result name="success">//view/Over2Cloud/feedback/master/ConfigureDashboardMapping/deparment.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="fetchempyeeFor" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="fetchempyeeFor">
+            <result name="success">//view/Over2Cloud/feedback/master/ConfigureDashboardMapping/employee.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+         <action name="fetchformTypeFor" class="com.Over2Cloud.ctrl.feedback.master.ConfigureDashbaordView" method="fetchformTypeSession">
+            <result name="success">//view/Over2Cloud/feedback/master/ConfigureDashboardMapping/formType.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      
+      
+    
+    
+		
+     </package>
+</struts>

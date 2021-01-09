@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="false"/>
+	<package name="coordinator" extends="struts-default,json-default" namespace="/view/Over2Cloud/coordinator">
+     	
+     	<action name="beforeViewCoordinatorContact" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="beforeViewSeekApproval">
+			<result name="success">/view/Over2Cloud/Admin/coordinator/beforeCoordinatorContactViewHeader.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name= "viewCoordinatorContact" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="viewCoordinatorContact">
+			<result name= "success" type="json"><param name="root">masterViewList</param></result>
+			<result name= "error">/view/error.jsp</result>
+			<result name= "login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="beforeAddCoordinatorContact" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="beforeAddCoordinatorContact">
+            <result name="success">/view/Over2Cloud/Admin/coordinator/beforeAddCoordinatorContact.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="addCoordinatorContact" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="addCoordinatorContact">
+            <result name="success" type="json"><param name="root">data</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	
+     	<action name="fetchUserList" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="fetchUserList">
+            <result name="success">/view/Over2Cloud/Admin/SeekApproval/employeeData.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="beforeModifyCoordinator" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="beforeModifyCoordinator">
+            <result name="success">/view/Over2Cloud/Admin/coordinator/modifyCoorporateContact.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="modifyCoordinator" class= "com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="modifyCoordinator">
+     		<result name="success" type="json"><param name="root">data</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     	</action>
+     	
+     	<action name="fetcDepartment" class="com.Over2Cloud.ctrl.helpdesk.coordinator.CoordinatorContact" method="fetcDepartment">
+			<result name="success">/view/Over2Cloud/Admin/SeekApproval/headerDeptD.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="feedbackDashboardReports" extends="struts-default,json-default" namespace="/view/Over2Cloud/feedback/feedbackDashboardReports">
+         
+		 
+		<action name="feedbackReportsCommonAction" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="feedbackReportsCommonAction">
+			<result name="success">/view/Over2Cloud/feedback/dashboardReport/feedbackReports.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		    
+		<action name="fetchFilter" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="fetchFilter">
+			<result name="success">/view/Over2Cloud/feedback/dashboardReport/feedbackFilterReport.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		    
+		<action name="downloadXLIPReport" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="downloadXLIPReport">
+ 			<result name="success" type="stream">
+			<param name="contentType">application/vnd.ms-excel</param>
+			<param name="inputName">excelStream</param>
+			<param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+			<param name="bufferSize">1024</param>
+			</result>
+		 	<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp
+			</result>
+		</action>
+		
+		
+		  <action name="fetchDoctor"  class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="fetchDoctor">
+          <result name="success" type="json"><param name="root">arr</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+			<action name="getMultiSelectDropDownData" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="getMultiSelectDropDownData">
+			<result name="success">/view/Over2Cloud/feedback/dashboardReport/multiSelectDropDown.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		 <action name="fetchQuestion" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="fetchQuestion">
+         <result name="success">/view/Over2Cloud/feedback/dashboardReport/questionList.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+            </action>
+            
+		 <action name="dataConfDashboardBrandTrack" class="com.Over2Cloud.ctrl.feedback.dashboard.report.FeedbackDashboardReports" method="getDepartmentalPIEData">
+			<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts> 

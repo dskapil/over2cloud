@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <constant name="struts.devMode" value="false" />
+   <package name="commonConfigurationModule" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/configuration">
+      <action name="fetchDepartment1" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="fetchDepartment1">
+         <result name="success">/view/Over2Cloud/Admin/configDeptList.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="employeeData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="employeeData">
+         <result name="success">/view/Over2Cloud/Admin/employeeDropMulti.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="depatmentsforlistByOrg" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="fetchAlldeptByOrg">
+         <result name="success" type="json">
+            <param name="root">jsonList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- by suraj 15-11-2018 -->
+      <action name="fetchEmployee" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="fetchEmployeeData">
+         <result name="success">/view/Over2Cloud/Admin/Exclusion/ViewEmp.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+       <action name="insertDataBlackList" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="insertDataBlackList">
+        <interceptor-ref name="basicStack"/>
+         <interceptor-ref name="token" /> 
+         <result name="success" type="json">
+            <param name="root">data</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+          <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- Exclusion start suraj 15-11-2018-->
+      <action name="beforeBlackListView" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="beforeBlackListView">
+         <result name="success">/view/Over2Cloud/Admin/Exclusion/ViewBlackList.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewBlacKListDataGrid" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="viewBlacKListDataGrid">
+         <result name="success" type="json">
+            <param name="root">viewblackList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeEditPageBlackList" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="beforeEditBlackListPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="ExclusionEdit" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="editBlackListData">
+         	<interceptor-ref name="token" /> 
+                <interceptor-ref name="basicStack"/>
+         <result name="success" type="json">
+            <param name="root">editSuccessData</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+          <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+    
+      <action name="deleteDataExclusion" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="deleteBlackListdata">
+         <result name="success" type="json">
+            <param name="root">deteteData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeBlackListAdd" class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="beforeBlackListAdd">
+         <result name="success">/view/Over2Cloud/Admin/Exclusion/AddBlackList.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- 
+     <action name="insertDataBlackList"  class="com.Over2Cloud.ctrl.admin.communication.BlackListModule" method="insertDataBlackList" >
+             <result name="success">/view/success.jsp</result>
+             <result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     -->
+      <!-- Exclusion end -->
+      <action name="viewsmsdraftHeader" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="viewsmsdraftHeader">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/viewSmsDraftHeader.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="ViewSmsDraftInGrid" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="viewSmsDraftInGrid">
+         <result name="success" type="json">
+            <param name="root">viewsmsData</param>
+         </result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="addsmsdraft" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="addsmsdraft">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/addSmsDraft.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      
+       <!-- Server Side Validation -->
+	 <action name="smsDraftServerSideValidation" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="smsDraftServerSideValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+      
+     <action name="insertsmsdraft" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="insertsmsdraft">
+          <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+               <result name="success" type="json"><param name="root">msg</param> </result>
+         <!-- <result name="success">/view/success.jsp</result> -->
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="invalid.token">/view/error.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+    
+      <action name="beforeEditPageSMS" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="beforeEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+    <action name="SMSDraftEdit" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="editSMSData">
+          <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+         <result name="success" type="json">
+            <param name="root">editSuccessDataSMS</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+            <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="deleteDataSMS" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="deleteSMSdata">
+         <result name="success" type="json">
+            <param name="root">deteteDataSMS</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- end  -->
+      <!-- email draft  by suraj -->
+      <action name="viewEmaildraftsHeader" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="viewEmaildraftsHeader">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/viewEmailDraftHeader.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="ViewEmailDraftInGrid" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="viewEmailDraftInGrid">
+         <result name="success" type="json">
+            <param name="root">viewEmailData</param>
+         </result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="addEmaildraft" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="addEmaildraft">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/addEmaildraft.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="beforeEditPageEmail" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="beforeEmailEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="EmailDraftEdit" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="emailEditData">
+         <result name="success" type="json">
+            <param name="root">editSuccessDataEmail</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="deleteDataEmail" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="emailDeleteData">
+         <result name="success" type="json">
+            <param name="root">deteteDataEmail</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- end -->
+      <!-- Communication Start  modified By suraj 15-11-2018-->
+      <!-- Communication Start  modified By suraj 15-11-2018-->
+      <action name="getCommunicationDataHeader" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="beforeMailSms">
+         <result name="success">/view/Over2Cloud/Admin/communication/communicationSmsMailHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewSMSData" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="viewSMSData">
+         <result name="success" type="json">
+            <param name="root">viewSmsList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="getCommunicationDataHeaderEmail" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="beforeMail">
+         <result name="success">/view/Over2Cloud/Admin/communication/communicationMailHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewEmailData" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="viewEmailData">
+         <result name="success" type="json">
+            <param name="root">emailListData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="updateCommunication" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="updateCommunication">
+         <result name="success" type="json">
+            <param name="root">updatecommunicationData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- end -->
+      <!--	
+	
+	
+	
+	<action name="getCommunicationDataHeader"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="beforeMailSms" >
+            	<result name="success">/view/Over2Cloud/Admin/communication/communicationSmsMailHeader.jsp</result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+      <action name="viewSMSData"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="viewSMSData">
+            	<result name="success" type="json"><param name="root">viewSmsList</param></result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="getCommunicationDataHeaderEmail"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="beforeMail" >
+            	<result name="success">/view/Over2Cloud/Admin/communication/communicationMailHeader.jsp</result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+       <action name="viewEmailData"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="viewEmailData">
+            	<result name="success" type="json"><param name="root">emailListData</param></result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+  <action name="updateCommunication"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="updateCommunication">
+            <result name="success" type="json"><param name="root">updatecommunicationData</param></result>
+         <result name="error">/view/error.jsp</result>
+	     <result name="login">/view/invalidSession.jsp</result>
+     </action>
+		-->
+      <!-- 
+	
+	  <action name="mobileActivityHistoryData"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="mobileMessage" >
+            	<result name="success">/view/Over2Cloud/Admin/communication/mobileMessage.jsp</result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+    
+     
+     <action name="printEmail" class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction" method="geEmailDetails">
+            <result name="success">/view/Over2Cloud/Admin/communication/emailPrint.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	 
+	 end -->
+      <action name="mobileActivityHistoryData" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="mobileMessage">
+         <result name="success">/view/Over2Cloud/Admin/communication/mobileMessage.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="printEmail" class="com.Over2Cloud.ctrl.admin.communication.SmsMailCommunicationAction" method="geEmailDetails">
+         <result name="success">/view/Over2Cloud/Admin/communication/emailPrint.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- Holiday Start -->
+      <!-- jyoti 21-01-17 -->
+      <action name="beforeHolidayListViewheader" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="beforeHolidayListViewheader">
+         <result name="success">/view/Over2Cloud/Admin/Holiday/viewHolidayHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="holidayGridDataViewIn" method="fetchHolidayView" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList">
+         <result name="success" type="json">
+            <param name="root">holidayDataViewShow</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="beforeHolidayList" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="beforeHoliday">
+         <result name="success">/view/Over2Cloud/Admin/Holiday/createHolidayList.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="holidayAddAction" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="addHolidayList">
+          <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="token" /> 
+                 <result name="success" type="json"><param name="root">Message</param> </result>
+         <!-- <result name="success">/view/success.jsp</result> -->
+         <result name="error">/view/error.jsp</result>
+          <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeEditPageHoliday" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="beforeEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+        <!-- Server Side Validation -->
+	 <action name="holidayAddActionValidation" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="holidayAddActionValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		   <!-- /// SuperAdmin // read Excel Create By Mohit Thakur On 21_Nov_2020 Holiday-->
+		<action name="beforeUploadHolidayExcelSuperAdmin" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="beforeUploadHolidayExcelSuperAdmin">
+			<result name="success">/view/Over2Cloud/Admin/Holiday/beforViewExcelUploadHoliday.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+      
+      <action name="uploadexcelfileHoliday" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="readExcelDataContentHoliday">
+			<result name="success" type="json">
+				<param name="root">XYZ</param>
+			</result>
+		</action>
+		
+		  <action name="Holiday_ExcelView" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="Holiday_ExcelView">
+			<result name="success">/view/Over2Cloud/Admin/Holiday/confirmHolidayExcel.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="showUploadHoliday" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="showUploadHoliday">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="saveHolidayExcle" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="saveHolidayExcle">
+		  <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+      
+      
+      
+      
+      <action name="holidayEdit" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="editData">
+         <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="token" /> 
+         <result name="success" type="json">
+            <param name="root">editSuccessData</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+           <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="deleteDataHoliday" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="deletedata">
+         <result name="success" type="json">
+            <param name="root">deteteData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- end -->
+      <!-- Configure Report start -->
+      <!-- modify by suraj 15-11-2018 -->
+     <action name="beforeDailyReportConfigViewHeader" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeDailyReportConfigViewHeader">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/reportConfigViewHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeDailyReportConfig" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeAddReportConfig">
+         <result name="success">/view/Over2Cloud/Admin/AdminConfigure/dailyReportConfiguration.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="reportEmailData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeReportEmailData">
+         <result name="success">/view/Over2Cloud/Admin/communication/emailPrint.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="reportSMSData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeReportSMSData">
+         <result name="success">/view/Over2Cloud/Admin/communication/emailPrint.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewReportData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="viewReportConfigData">
+         <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+     <action name="addReportConfiguration"  class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="addReportConfiguration">
+             		<result name="success" type="json">
+				<param name="root">successMessage</param>
+			</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="reportDeleteMasterData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="deleteMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="reportDeforeEditPage" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="reportEditMasterData" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="editMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="reportDeforeEditPage1" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="beforeEditConfigure">
+         <result name="success">/view/Over2Cloud/Admin/editConfigReport.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="editConfigure" class="com.Over2Cloud.ctrl.admin.organization.ReportConfiguration" method="editConfigureRep">
+         <result name="success" type="json">
+            <param name="root">message</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <!-- Configure Report end -->
+      <!-- Communication Start -->
+      <action name="insertEmaildraft" class="com.Over2Cloud.ctrl.admin.organization.SmsEmailDraft" method="insertEmaildraft">
+         <result name="success">/view/success.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         <result name="error">/view/error.jsp</result>
+      </action>
+      <action name="getCommunicationDataForMail" class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction">
+         <result name="success">/view/Over2Cloud/Admin/communication/communicationMail.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!--
+     
+      
+      <action name="getCommunicationDataForMail"  class="com.Over2Cloud.ctrl.admin.communication.CommunicationAction">
+            	<result name="success">/view/Over2Cloud/Admin/communication/communicationMail.jsp</result>
+            	<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+	-->
+      <!-- Communication End -->
+      <!-- Announcements -->
+      <!-- suraj edit 15-11-2018  -->
+      <action name="beforeNewsAlertsViewHeader" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="beforeNewsAlertsViewHeader">
+         <result name="success">/view/Over2Cloud/Admin/newsandEvents/viewNewsAlertsHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- suraj edit 15-11-2018  -->
+      <action name="showAllNewsAlerts" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="viewAllNewsAlerts">
+         <result name="success" type="json">
+            <param name="root">viewNewsAlerts</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeNewsAdd" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="beforeNewsEventsAdd">
+         <result name="success">/view/Over2Cloud/Admin/newsandEvents/createNewsAndEvents.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+
+      <action name="addNewsAlerts" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="addAlertsAndNews">
+        <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="token" /> 
+         <result name="success" type="json">
+            <param name="root">message</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         	<result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- suraj  add  action 15-11-2018-->
+      <action name="announcementDeleteMasterData" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="deleteMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="announcementBeforeEditPage" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="beforeEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="announcementEditMasterData" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="editMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="getEmployeeByDepartment" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="fetchEmployeeByDepartment">
+         <result name="success">/view/Over2Cloud/Admin/newsandEvents/employeeListByDeptId.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <!-- Announcements -->
+      <!-- Holiday Start -->
+      <action name="currentColumn" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="getColumn4Download">
+         <result name="success">/view/Over2Cloud/Admin/Holiday/confirm4Download.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="downloadAction" class="com.Over2Cloud.ctrl.admin.Holiday.HolidayList" method="downloadExcel">
+         <result name="success" type="stream">
+            <param name="contentType">application/vnd.ms-excel</param>
+            <param name="inputName">excelStream</param>
+            <param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+            <param name="bufferSize">1024</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <!-- Excel -->
+      <action name="uploadExcel" class="com.Over2Cloud.ctrl.admin.Holiday.ExcelUpload" method="readExcelData">
+         <result name="success">/view/Over2Cloud/Admin/Holiday/confirm4Upload.jsp</result>
+         <result name="attendanceMark">/view/Over2Cloud/Admin/Holiday/confirmAttendanceExcel.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="viewUploadExcelGridData" class="com.Over2Cloud.ctrl.admin.Holiday.ExcelUpload" method="viewConfirmationData">
+         <result name="success" type="json" />
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="saveExcelData" class="com.Over2Cloud.ctrl.admin.Holiday.ExcelUpload" method="saveSelectData">
+         <result name="success">/view/success.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="showExcel" class="com.Over2Cloud.ctrl.admin.Holiday.ExcelUpload" method="showUpload">
+         <result name="success" type="json" />
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="saveAttendanceExcel" class="com.Over2Cloud.ctrl.admin.Holiday.ExcelUpload" method="saveAttendanceData">
+         <result name="success">/view/success.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <!-- Holiday End -->
+      <!-- Working Hrs. Start -->
+      <action name="getHeaderBeforeView" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="fatchHeaderBeforeView">
+         <result name="success">/view/Over2Cloud/Admin/WorkingHrs/beforeViewWorkingHrs.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewWorkingHrs" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="viewWorkingHrs">
+         <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="orgdept" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="orgdept">
+         <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config/deparment.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeAdd" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="beforeAdd">
+         <result name="success">/view/Over2Cloud/Admin/WorkingHrs/createWorkTiming.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="getApplyedWorkingHrsDept" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="fatchApplyedWorkingHrsDept">
+         <result name="success" type="json">
+            <param name="root">arrObj</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="getConcernDept" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="fatchConcernDept">
+         <result name="success" type="json">
+            <param name="root">arrObj</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="orgModuleDept" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="orgModuleDept">
+         <result name="success" type="json">
+            <param name="root">arrObj</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+    <action name="addWorkingTiming" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="addWorkingTimings">
+        <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="orgname" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="orgname">
+         <result name="success">/view/Over2Cloud/Admin/WorkingHrs/deparment.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- suraj  add  action 15-11-2018-->
+      <action name="workingDeleteMasterData" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="deleteMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+      <action name="addWorkingTimingValidation" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="addWorkingTimingValidation">
+<result name="success" type="json">
+   <param name="root">messageData</param>
+</result>
+<result name="error">/view/error.jsp</result>
+<result name="login">/view/invalidSession.jsp</result>
+</action>
+      
+      <action name="workingDeforeEditPage" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="beforeEditPage">
+         <result name="success">/view/Over2Cloud/Admin/editDataAdmin.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+     <action name="workingEditMasterData" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="editMasterData">
+        <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <!-- end -->
+      <!-- Working Hrs. End -->
+      <!-- Account Status -->
+      <!-- Account Status  -->
+      <action name="viewNewsandalerts" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="viewNewsandalerts">
+         <result name="success">/view/Over2Cloud/Admin/newsandEvents/newsAndAlerts.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="updateFlagtoSeen" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="updateFlagtoSeen">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="viewAllNotification" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="viewAllNotification">
+         <result name="success" type="json">
+            <param name="root">allNotification</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      <action name="showMappedUserForNotification" class="com.Over2Cloud.ctrl.admin.communication.NewsAlertsViewCtrl" method="showMappedUserForNotification">
+         <result name="success" type="json">
+            <param name="root">allNotification</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+      <!--  chandan prasad  -->
+      
+       <!-- Configure Communication Start -->
+      <action name="communicationConfigureView" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="beforecommunicationConfigureView">
+         <result name="success">/view/Over2Cloud/Admin/communication/configureCommunicationView.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewconfigureEvent" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="viewconfigureEvent">
+         <result name="success" type="json">
+            <param name="root">eventlist</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewModeConfigure" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="viewModeConfigure">
+         <result name="success" type="json">
+            <param name="root">modelist</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="viewemployeeOnMode" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="viewemployeeOnMode">
+         <result name="success" type="json">
+            <param name="root">modeemplist</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+     
+      <action name="getStatusModuleWiseAdd" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="getStatusModuleWiseAdd">
+<result name="success">/view/Over2Cloud/Admin/communication/configureStatusAdd.jsp</result>
+<result name="error">/view/error.jsp</result>
+    <result name="login">/view/invalidSession.jsp</result>
+</action>
+
+
+<action name="configureStatusModuleWiseServerValidation" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="configureStatusModuleWiseServerValidation">
+			<result name="success" type="json">
+				<param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+
+     
+     
+      <action name="fetchModuleEvent" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="fetchModuleEvent">
+<result name="success" type="json"><param name="root">eventList</param></result>
+<result name="error">/view/error.jsp</result>
+    <result name="login">/view/invalidSession.jsp</result>
+</action>
+      <action name="configureStatusModuleWise" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="configureStatusModuleWise">
+ <interceptor-ref name="basicStack"/>
+         <interceptor-ref name="token" /> 
+<result name="success" type="json"><param name="root">SuccessMessage</param></result>
+<result name="error">/view/error.jsp</result>
+    <result name="login">/view/invalidSession.jsp</result>
+</action>
+     
+      <action name="communicationConfigureAdd" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="communicationConfigureView">
+         <result name="success">/view/Over2Cloud/Admin/communication/configureCommunicationAdd.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="addConfiguredContatcts" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="addConfiguredContatcts">
+         <result name="success">/view/Over2Cloud/Admin/communication/addConfigureContacts.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="addConfiguredContatctsforEmail" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="addConfiguredContatcts">
+         <result name="success">/view/Over2Cloud/Admin/communication/addConfigureContactsforEmail.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="addconfigureCommunication" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="addconfigureCommunication">
+                  <interceptor-ref name="token" />
+          <interceptor-ref name="basicStack"/>
+          <interceptor-ref name="defaultStack"/>
+         <result name="success" type="json">
+            <param name="root">arr</param>
+         </result>
+                          <result name="invalid.token">/view/error.jsp</result>
+             
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="DeleteMappedEmployee" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="DeleteMappedEmployee">
+         <result name="success" type="json">
+            <param name="root">arr</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="fetchEmployeeforDept" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="fetchEmployeeData">
+         <result name="success">/view/Over2Cloud/Admin/communication/viewEmpconfigureCommunication.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="fetchEmployeeforDeptEmail" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="fetchEmployeeData">
+         <result name="success">/view/Over2Cloud/Admin/communication/viewEmpEmailCommunication.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      
+      <action name="fetchContactTypeconfigure" class="com.Over2Cloud.ctrl.admin.communication.ConfigureCommunication" method="fatchConcernDeptConfigure">
+         <result name="success" type="json"><param name="root">jsonArrayData</param></result>
+<result name="error">/view/common_pages/error.jsp</result>
+<result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+      <!-- Configure Communication end -->
+       <action name="beforeMailListViewheader" class="com.Over2Cloud.ctrl.admin.mailheader.Mailheader" method="beforemailheaderListViewheader">
+         <result name="success">/view/Over2Cloud/Admin/mailheader/viewMailheadeHeader.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+    <action name="createMailListPage" class="com.Over2Cloud.ctrl.admin.mailheader.Mailheader" method="beforeMailListPage">
+         <result name="success">/view/Over2Cloud/Admin/mailheader/CreateMailconfigureadd.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+         </action>
+         
+         
+      <action name="addMailconfigure" class="com.Over2Cloud.ctrl.admin.mailheader.Mailheader" method="addMailconfigure">
+	<result name="success" type="json"><param name="root">successMSG</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+        <action name="mailcomfigureView" class="com.Over2Cloud.ctrl.admin.mailheader.Mailheader" method="mailcomfigureView">
+	        <result name="success" type="json"><param name="root">mailcomfigureView</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+       
+       
+       
+       
+       <!-- /// SuperAdmin // read Excel Create By Mohit Thakur On 21_Nov_2020-->
+		<action name="beforeUploadDepartmentExcelSuperAdmin" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="beforeUploadExcelSuperAdmin">
+			<result name="success">/view/Over2Cloud/Admin/WorkingHrs/beforViewExcelUploadWorkingHour.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="uploadexcelfileDept" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="readExcelDataContent">
+			<result name="success" type="json">
+				<param name="root">XYZ</param>
+			</result>
+		</action>
+		
+		  <action name="workingHour_ExcelView" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="workingHour_ExcelView">
+			<result name="success">/view/Over2Cloud/Admin/WorkingHrs/confirmWorkingHourExcel.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		 <action name="showUploadWorkingHour" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="showUploadWorkingHour">
+			<result name="success" type="json">
+				<param name="root">viewData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="saveWorkingHourExcle" class="com.Over2Cloud.ctrl.admin.WorkingHrs.ConfigureWorkingHrs" method="saveWorkingHourExcle">
+		  <result name="success" type="json"><param name="root">successMessage</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+      
+      
+      <!-- Configure Communication end -->
+      
+      
+   </package>
+</struts>

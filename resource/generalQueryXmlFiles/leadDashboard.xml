@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+    <package name="leadMagnetDashboard" extends="struts-default,json-default" namespace="/view/leadMagnet/dashboard">
+    <!-- Start -->
+    <action name="beforeleadDashboardReportHeader" class="com.Over2Cloud.ctrl.lead.magnet.QueryLeadActivityBoard" method="viewQueryLeadHeader">
+	<result name="success">/view/Over2Cloud/leadMagnet/Dashboard/leadMagnetReportHeader.jsp</result>
+	<result name="error" >/view/error.jsp</result>
+	<result name="login" >/view/invalidSession.jsp</result>
+	</action>
+    <action name="beforeLeadDashboard" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="beforeLeadDashboard">
+			<result name="success">/view/Over2Cloud/leadMagnet/Dashboard/leadDashboardHeader.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+	<action name="viewCountForDashBoard" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="viewCountForDashBoard">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+       </action>	
+       <action name="viewCountForLevelWise" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="viewCountForLevelWise">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+       </action>	
+        <action name="summeryReport" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="summeryReport">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+       </action>	
+       <action name="viewLostCountForDashBoard" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="viewLostCountForDashBoard">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+       </action>	
+       
+         <action name="locationWiseData" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="locationWiseData">
+            <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+   </action>
+    <action name="tableViewLocationWise" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="countryWiseLocationTableData">
+         <result name="success" type="json">
+                <param name="dataArray">commonJSONArray</param>
+             </result>
+                <result name="login">/view/invalidSession.jsp</result>
+   </action>
+    <action name="fetchProcessQuery" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="fetchProcessQuery">
+			<result name="success">/view/Over2Cloud/leadMagnet/Dashboard/leadStatusCounter.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+	 <action name="revanuView" class="com.Over2Cloud.ctrl.lead.magnet.LeadDashboard" method="revanuView">
+	            <result name="success" type="json"><param name="root">viewList</param></result>
+	            <result name="error">/view/error.jsp</result>
+	            <result name="login">/view/invalidSession.jsp</result>
+     </action>
+    <!-- End -->
+    </package>
+</struts>

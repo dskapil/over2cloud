@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <constant name="struts.devMode" value="false" />
+   <!--
+Package Start for Ticket Series
+-->
+   <package name="helpDesk/ticketconfiguration" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config">
+      <action name="beforeTicketConfigView" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="beforeTicketSeriesView">
+         <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config/normalTicketView.jsp</result>
+         <result name="deptSUCCESS">/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config/deptTicketView.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!-- /// -->
+        <action name="beforeUploadTicketSeries" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="beforeTicketUploadExcelSuperAdmin">
+			<result name="success">/view/Over2Cloud/Admin/department/uploadTicketSeries.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+        <action name="uploadExlTicketSuperAdmin" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="readExlTicletSuperAdmin">
+			<result name="success" type="json">
+				<param name="root">XYZ</param>
+			</result>
+
+		</action>
+	    <action name="cnfrmTktSuperAdmin">
+			<result name="success">/view/Over2Cloud/Admin/department/cnfrmTktSuperAdmin.jsp</result>
+	    </action>
+		<action name="showUpldTktSuperAdmin" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="showUpldTktSuperAdmin">
+			<result name="success" type="json">
+				<param name="root">gridDataList</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		<action name="showWrongTktSuperAdmin"
+			class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="showWrongTktSuperAdmin">
+			<result name="success" type="json">
+				<param name="root">gridDataList</param>
+			</result>
+			<result name="login">/view/invalidSession.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="ignoreBeforeSaveTktSuperAdmin"
+			class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="ignoreBeforeSaveTktSuperAdmin">
+			<result name="success" type="json">
+				<param name="root">successMessage</param>
+			</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+		</action>
+		<action name="saveTktExcelSuperAdmin" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="saveTktExcelSuperAdmin">
+			<!-- <result name="success">/view/success.jsp</result> -->
+	<result name="success" type="json">
+				<param name="root">successMessage</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+      <!-- /// -->
+      <action name="orgname" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="orgname">
+         <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config/deparment.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="orgnameadd" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="orgnameadd">
+         <result name="success" type="json">
+            <param name="root">jsonList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="beforeTicketConfigAdd" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="beforeTicketSeriesAdd">
+         <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Ticket_Config/ticketSeries.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <action name="getPrefixViaAjax" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="getPrefixViaAjax">
+         <result name="success" type="json">
+            <param name="root">prefix</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+     <action name="addTicketSeries" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="addTicketSeries">
+          <interceptor-ref name="token" />
+               <interceptor-ref name="basicStack"/>
+                <result name="success" type="json"><param name="root">msg</param> </result>
+         <!-- <result name="success">/view/success.jsp</result> -->
+         <result name="error">/view/error.jsp</result>
+         <result name="invalid.token">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <!--  Server Side Validation -->
+       <action name="serverSideValidaton" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="serverSideValidaton">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+      
+      
+      
+      
+      
+
+      <action name="viewNormalTicketConf" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="ticketSeriesView">
+         <result name="success" type="json">
+            <param name="root">ticketSeriesData</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      <!--     
+     <action name="editTicketSeries"  class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="editTicketSeries">
+            	<result name="success" type="json"></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action> -->
+      <action name="DeleteTicketConfigGrid" class="com.Over2Cloud.ctrl.helpdesk.ticketconfiguration.TicketConfiguration" method="editTicketSeries">
+         <result name="success" type="json" />
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+   </package>
+
+</struts>

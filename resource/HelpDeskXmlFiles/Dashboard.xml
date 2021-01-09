@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="helpDesk/newdashboardMgt" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/Dashboard_Pages">
+     
+     <action name="viewDashboardHDM"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="viewDashboardHDM">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Dashboard_Pages/helpdeskDashboardConsolidated.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="showStatusWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="showStatusWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+     <action name="fetchSubDepartmentList"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="fetchSubDepartmentList">
+	        <result name="success" type="json"><param name="root">commonJSONArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+     
+     
+      <action name="showLevelWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showLevelWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+       <action name="showTATWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showTATWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+        <action name="showCategoryWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showCategoryWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+        <action name="showSubCategoryWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showSubCategoryWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+        <action name="showLocationWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showLocationWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+         <action name="showReopenStatusComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="showReopenStatusComplaints">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+        <action name="showParkedStatusComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="showParkedStatusComplaints">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+       <action name="showTimeWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showTimeWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+       <action name="showStaffWiseComplaints"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showStaffWiseComplaints">
+	        <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+       
+       <action name="showSeverityData"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="showSeverityData">
+       		<result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+      </action>
+       
+      
+          <action name="fetchCategoryList"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="fetchCategoryList">
+        		<result name="success" type="json"><param name="root">commonJSONArray</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+        </action>
+     
+      <action name="fetchSubCategoryList"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="fetchSubCategoryList">
+        		<result name="success" type="json"><param name="root">commonJSONArray</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      <action name="showTableView"  class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard"  method="showTableView">
+          <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Dashboard_Pages/showTableView.jsp</result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+      <action name="showDataTableView" class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showDataTableView">
+		<result name="success" type="json"><param name="root">masterViewProp</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	  </action>
+       
+    <action name="showCategoryAnalysis" class="com.Over2Cloud.ctrl.helpdesk.dashboard.helpdeskDashboard" method="showCategoryAnalysis" >
+           <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Dashboard_Pages/categoryAnalysis.jsp</result>
+           <result name="error">/view/common_pages/error.jsp</result>
+           <result name="login">/view/common_pages/invalidSession.jsp</result>
+   	  </action>
+     
+    
+</package>
+</struts>

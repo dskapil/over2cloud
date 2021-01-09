@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false"/>
+	<package name="keyword" extends="struts-default,json-default" namespace="/view/Over2Cloud/keyword">
+	
+	
+		 <!--  Create by Mohit -->
+        <action name="getHeaderBeforeViewForAddKeyword" class="com.Over2Cloud.keyword.keyword" method="fatchHeaderBeforeViewKeyword">
+         <result name="success">/view/Over2Cloud/keyword/beforeViewAddKeyword.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+        <action name="viewKeyword" class="com.Over2Cloud.keyword.keyword" method="viewKeyword">
+         <result name="success" type="json">
+            <param name="root">masterViewList</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="beforeAddKeyWord" class="com.Over2Cloud.keyword.keyword" method="beforeAddKyword">
+         <result name="success">/view/Over2Cloud/keyword/createKeyword.jsp</result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="addKeyword" class="com.Over2Cloud.keyword.keyword" method="addKeyword">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="beforeEditKeywordPage" class="com.Over2Cloud.keyword.keyword" method="beforeEditKeywordPage">
+         <result name="success">/view/Over2Cloud/keyword/editKeywordData.jsp</result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+       <action name="editKeyword" class="com.Over2Cloud.keyword.keyword" method="editKeyword">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/error.jsp</result>
+         <result name="login">/view/invalidSession.jsp</result>
+      </action>
+      
+       <action name="deleteKeywordMasterData" class="com.Over2Cloud.keyword.keyword" method="deleteKeywordMasterData">
+         <result name="success" type="json">
+            <param name="root">successMessage</param>
+         </result>
+         <result name="error">/view/common_pages/error.jsp</result>
+         <result name="login">/view/common_pages/invalidSession.jsp</result>
+      </action>
+      
+	
+		
+		
+		
+	</package>
+</struts>

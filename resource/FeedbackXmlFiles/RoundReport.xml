@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	
+	
+	<package name="roundsReport" extends="struts-default,json-default" namespace="/view/Over2Cloud/feedback/roundsReport">
+		
+		<action name="roundsReportHeader" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="roundsReportHeader">
+			<result name="success">/view/Over2Cloud/feedback/reports/roundReport/showRoundReport.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showRoundsReport" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="showRoundsReport">
+			<result name="success" type="json">
+			<param name="root">reportsData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="takeActionOnRounds" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="takeActionOnRounds">
+			<result name="success" type="json"><param name="root">validate</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+           <action name="rangeConfigure" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="rangeConfigure">
+		<interceptor-ref name="token" />
+              <interceptor-ref name="basicStack"/>    
+			<result name="success" type="json"><param name="root">validate</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="invalid.token">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<!--  Server Side Validation -->
+       <action name="rangeConfigureValidation" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="rangeConfigureValidation">
+			<result name="success" type="json">
+		    <param name="root">messageData</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action> 
+				
+
+
+			<action name="configureReportPage" class="com.Over2Cloud.ctrl.feedback.report.RoundsReportAction" method="configureConfPage">
+			<result name="success">/view/Over2Cloud/feedback/reports/roundReport/addRangeConf.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+	</package>
+</struts>

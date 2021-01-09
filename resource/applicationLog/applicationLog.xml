@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="true"/>
+<package name="applicationLog" extends="struts-default,json-default" namespace="/view/Over2Cloud/applicationLog">
+
+<action name="beforeApplicationLogView"  class="com.Over2Cloud.ApplicationLog.ApplicationLog" method="beforeApplicationLogView">
+	          <result name="success">/view/Over2Cloud/ApplicationLog/viewApplicationLog.jsp</result>
+			  <result name="error">/view/error.jsp</result>
+			  <result name="login">/view/invalidSession.jsp</result>
+	     </action>
+        <action name="applicationLogView" class="com.Over2Cloud.ApplicationLog.ApplicationLog" method="applicationLogView">
+	        <result name="success" type="json"><param name="root">masterViewList</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       <action name="beforeApplicationLogColumnViewInGrid" class="com.Over2Cloud.ApplicationLog.ApplicationLog" method="beforeApplicationLogColumnView">
+	        <result name="success" type="json"><param name="root">masterViewListColumn</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       
+       <action name="historyViewAsPerDate" class="com.Over2Cloud.ApplicationLog.ApplicationLog" method="applicationLogColumnViewInGrid">
+	        <result name="success" type="json"><param name="root">masterViewListColumn</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+          <action name="historyView" class="com.Over2Cloud.ApplicationLog.ApplicationLog" method="applicationLogColumnViewInGrid">
+	        <result name="success" type="json"><param name="root">masterViewListColumn</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+       <!-- For Excel Download -->
+    	<!-- 	<action name="beforeDownloadApplicationLog" class="com.Over2Cloud.ApplicationLog.ApplicationLogExcelDownload" method="beforeDownloadApplicationLog">
+			<result name="success">/view/Over2Cloud/ApplicationLog/applicationLogExcelDownload.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="downloadAction" class="com.Over2Cloud.ApplicationLog.ApplicationLogExcelDownload" method="downloadApplicationLog">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action> -->
+		
+     </package>
+</struts>

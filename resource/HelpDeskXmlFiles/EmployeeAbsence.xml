@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="helpDesk/employeeAbsence" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/employeeAbsence">
+     
+     <action name="beforeViewEmpRosterHeader" class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="beforeViewEmpRosterHeader">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Employee_Absent/viewEmployeeAbsent.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+     <action name="viewEmployeeAbsentGrid"  class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="viewEmployeeAbsentGrid">
+		 <result name="success" type="json"><param name="root">ViewEmployeeAbsenceMaster</param></result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="beforeUpdateEmployeeAbsent" class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="beforeUpdateEmployeeAbsent">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Employee_Absent/beforeUpdateEmployeeRoster.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     
+     
+      <action name="updateEmployeeAbsent" class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="updateEmployeeAbsent">
+	<result name="success" type="json"><param name="root">successMsg</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     
+     
+      <action name="fetchDepartmentList"  class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="fetchDepartmentList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+         
+      <action name="fetchEmployeeList"  class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="fetchEmployeeList">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+         
+      <action name="checkTwoDateTime"  class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="checkTwoDateTime">
+          <result name="success" type="json"><param name="root">date</param></result>
+		  <result name="error">/view/error.jsp</result>
+		  <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchEmployeeRosterHistory" class="com.Over2Cloud.ctrl.helpdesk.employeeAbsence.EmployeeAbsenseMaster" method="fetchEmployeeRosterHistory">
+            <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Employee_Absent/employeeRosterHistory.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+     
+     
+     
+</package>
+
+ 
+</struts>

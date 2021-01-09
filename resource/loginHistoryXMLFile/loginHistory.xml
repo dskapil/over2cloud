@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="loginHistory" extends="struts-default,json-default" namespace="/view/loginHistory">
+     
+         <interceptors>
+            <interceptor name="mylogging" class="com.Over2Cloud.ctrl.loginHistory.MyLogHistory" />
+ 
+            <interceptor-stack name="loggingStack">
+                <interceptor-ref name="mylogging" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+     	
+     		<action name="viewheader" class="com.Over2Cloud.ctrl.loginHistory.LoginHistory" method="veiwHeader">
+     		  <interceptor-ref name="loggingStack"></interceptor-ref>
+            <result name="success" >/view/loginhistory/headView.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+       		 
+       		  <action name="fetchAllLoginDetails" class="com.Over2Cloud.ctrl.loginHistory.LoginHistory" method="fetchAllLoginDetails">
+           <result name="success" >/view/loginhistory/viewLoginHistory.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        
+       		<!-- <action name="viewloginHistory" class="com.Over2Cloud.ctrl.loginHistory.LoginHistory" method="viewloginHistory">
+            <result name="success" >/view/loginhistory/viewLoginHistory.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action> -->
+     
+		<action name="viewLoginData" class="com.Over2Cloud.ctrl.loginHistory.LoginHistory" method="viewLoginHistory">
+		  <interceptor-ref name="loggingStack"></interceptor-ref>
+            <result name="success" type="json"><param name="root">viewList</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+		
+		<action name="viewLoginDataOtherApps" class="com.Over2Cloud.ctrl.loginHistory.LoginHistory" method="viewLoginDataOtherApps">
+        <interceptor-ref name="loggingStack"></interceptor-ref>
+            <result name="success" type="json"></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+		<action name="beforeviewDetails" class="com.Over2Cloud.ctrl.loginHistory.LoginIndividual" method="viewByDateHistory">
+            <result name="success" >/view/loginhistory/viewDetails.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+
+		<action name="viewDetails" class="com.Over2Cloud.ctrl.loginHistory.LoginIndividual" method="fetchData">
+            <result name="success" type="json"></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+     
+           <action name="viewAppFeedbackHead" class="com.Over2Cloud.ctrl.loginHistory.FeedbackApp" method="viewFeedbackAppHeader">
+            <result name="success">/feedbackAppHeader.jsp</result>
+           <result name="error" >/view/common_pages/error.jsp</result>
+           <result name="login" >/view/common_pages/invalidSession.jsp</result>
+        </action> 
+        
+        <action name="viewAppFeedbackDetails" class="com.Over2Cloud.ctrl.loginHistory.FeedbackApp" method="viewFeedbackAppDetails">
+            <result name="success" >/viewFeedbackApp.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       		 </action>
+     
+		<action name="veiwDataJson" class="com.Over2Cloud.ctrl.loginHistory.FeedbackApp" method="veiwDataJson">
+		
+          <result name="success" type="json"></result>  
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+     
+     
+     </package>
+</struts>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+  
+   <package name="notiepatientalert" extends="struts-default,json-default" namespace="/view/Over2Cloud/notiepatientalert">
+
+	<action name="beforePatientNotieConfig"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="beforePatientNotieConfig">
+    <result name="success">/view/Over2Cloud/feedback/patientnotie/beforeConfigPatientNotify.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="patientNotieConfigCategory"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="patientNotieConfigCategory">
+    <result name="success">/view/Over2Cloud/feedback/patientnotie/categorypatientnotify.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="patientNotieConfigComplaint"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="patientNotieConfigComplaint">
+    <result name="success">/view/Over2Cloud/feedback/patientnotie/complaintnotifypatient.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    
+     <action name="fetchCategoryPatientAlert"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="fetchCategoryPatientAlert">
+            <result name="success" type="json"><param name="root">configDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="fetchComplaintPatientAlert"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="fetchComplaintPatientAlert">
+            <result name="success" type="json"><param name="root">configDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+    
+    <action name="beforeAddPatientNotification"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="beforeAddPatientNotification">
+    <result name="success">/view/Over2Cloud/feedback/patientnotie/addConfigPatientNotify.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+    </action>
+
+
+	<action name="fetchCategoryforDepartment" class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification"  method="fetchCategoryforDepartment">
+			<result name="success">/view/Over2Cloud/feedback/patientnotie/multiCategoryPage.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+ 	
+ 	<action name="fetchSubCategoryforCategory" class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification"  method="fetchSubCategoryforCategory">
+			<result name="success">/view/Over2Cloud/feedback/patientnotie/multiSubCategoryPage.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+ 	
+ 	<!--  
+ 	<action name="addFeedCategory"  class="com.Over2Cloud.ctrl.helpdesk.feeddraft.FeedbackDraftAction" method="addFeedbackCategory">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+ 	-->
+ 	
+ 	<action name="addPatientComplaint"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="addPatientComplaint">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="addPatientCategory"  class="com.Over2Cloud.ctrl.feedback.patientnotie.PatientNotification" method="addPatientCategory">
+            	<result name="success">/view/success.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+
+
+
+
+   </package>
+   </struts>
+   

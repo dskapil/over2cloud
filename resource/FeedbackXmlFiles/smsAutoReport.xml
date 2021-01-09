@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+
+	<package name="feedbackSMSReport" extends="struts-default,json-default" namespace="/view/Over2Cloud/feedback/feedbackSMSReport">
+	
+	<!--  
+		<action name="fetchDashboardCommonAction" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD" method="fetchDashboardCommonAction">
+			<result name="collection">/view/Over2Cloud/feedback/dashboardForCEO/feedbackDashboardCollection.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		-->
+		
+		
+		<action name="fetchSMSReport" class="com.Over2Cloud.ctrl.feedback.FeedbackSMSReport" method="fetchSMSBeforeReport">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackSMSReport.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="showSMSUnitAnalysisTable" class="com.Over2Cloud.ctrl.feedback.FeedbackSMSReport" method="showSMSUnitAnalysisTable">
+			<result name="success">/view/Over2Cloud/feedback/dashboardForCEO/feedbackSMSReportView.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<action name="smsTableView"  class="com.Over2Cloud.ctrl.feedback.FeedbackSMSReport" method="smsTableView">
+        <result name="success" type="json"><param name="root">listData</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp</result>
+    </action>
+		
+		 
+		
+	</package>
+
+</struts>

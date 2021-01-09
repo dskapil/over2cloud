@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="true"/>
+<package name="applicationUpdate" extends="struts-default,json-default" namespace="/view/Over2Cloud/applicationUpdate">
+
+<action name="beforeApplicationUpdate"  class="com.Over2Cloud.ctrl.applicationupdate.applicationUpdateView" method="beforeApplicationUpdateView">
+	          <result name="success">/view/Over2Cloud/applicationupdate/applicationUpdateView.jsp</result>
+			  <result name="error">/view/error.jsp</result>
+			  <result name="login">/view/invalidSession.jsp</result>
+	     </action>
+        <action name="applicationUpdateView" class="com.Over2Cloud.ctrl.applicationupdate.applicationUpdateView" method="applicationUpdateView">
+	        <result name="success" type="json"><param name="root">viewEmployeeMapping</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+       </action>
+     <action name="beforeAddApplicationUpdate" class="com.Over2Cloud.ctrl.applicationupdate.applicationUpdateView" method="beforeAddApplicationUpdate">
+	          <result name="success">/view/Over2Cloud/applicationupdate/applicationUpdateViewAdd.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    <action name="addapplicationUpdate" class="com.Over2Cloud.ctrl.applicationupdate.applicationUpdateView" method="addapplicationUpdate">
+        	 <interceptor-ref name="defaultStack"/>  
+			<interceptor-ref name="basicStack"/>
+			
+			
+	<result name="success" type="json"><param name="root">successMSG</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+   
+     </package>
+</struts>

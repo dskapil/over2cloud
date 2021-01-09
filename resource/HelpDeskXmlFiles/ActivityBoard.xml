@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.devMode" value="false"/>
+<package name="helpDesk/ActivityBoard" extends="struts-default,json-default" namespace="/view/Over2Cloud/HelpDeskOver2Cloud/Activity_Board">
+
+
+<!-- - rating through  mail start -->
+
+<action name="beforeOfflineRating" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="beforeOfflineRating">
+		<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/PostCloserRating/offlineRating.jsp</result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	<action name="offfileRating" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="offfileRating">
+		 <result name="success" type="json"><param name="root">rationPage</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	 <action name="ratingScale"  class="com.Over2Cloud.ctrl.helpdesk.onlineRating.OnlineRatingScale" method="ratingScale">
+	 <result name="successofline" type="json"><param name="root">successMessage</param></result>
+            <result name="success">/view/success.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+   <action name="hdmPostClosureRatingHeader"  class="com.Over2Cloud.ctrl.helpdesk.onlineRating.OnlineRatingScale" method="beforeViewPostCloserRating">
+	 <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/PostCloserRating/postClosureRatingHeader.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+   <action name="beforeAddPostCloser"  class="com.Over2Cloud.ctrl.helpdesk.onlineRating.OnlineRatingScale" method="beforeAddPostCloser">
+	 <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/PostCloserRating/postClosureRatingAdd.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="postCloserAdd"  class="com.Over2Cloud.ctrl.helpdesk.onlineRating.OnlineRatingScale" method="postCloserAdd">
+	 <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="viewPostCloserRating" class="com.Over2Cloud.ctrl.helpdesk.onlineRating.OnlineRatingScale" method="viewPostCloserRating">
+		 <result name="success" type="json"><param name="root">viewList</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+
+<!--   end   -->
+
+ <action name="viewNewsandalerts" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="viewNewsandalerts">
+    <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/newsAndAlerts.jsp</result>
+    <result name="error" >/view/common_pages/error.jsp</result>
+    <result name="login" >/view/common_pages/invalidSession.jsp</result>
+ </action> 
+
+ 
+<action name="viewOpenedTATDetails" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewOpenedTATDetails">
+	<result name="success" >/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/ticketTATDetails.jsp</result>
+    <result name="error" >/view/error.jsp</result>
+    <result name="login" >/view/invalidSession.jsp</result>
+</action>
+
+<action name="viewHistoryDetailsOfPatient" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewHistoryDetailsOfPatient">
+	<result name="success" >/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/viewHistoryDetailsOfPatient.jsp</result>
+    <result name="error" >/view/error.jsp</result>
+    <result name="login" >/view/invalidSession.jsp</result>
+</action>
+
+<action name="viewComplaintOnLocation" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewComplaintOnLocation">
+	<result name="success" >/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/viewComplaintOnLocation.jsp</result>
+    <result name="error" >/view/error.jsp</result>
+    <result name="login" >/view/invalidSession.jsp</result>
+</action>
+
+<action name="viewComplaintOnLocationForLodgePage" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewComplaintOnLocationForLodgePage">
+	<result name="success" >/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/viewComplaintOnLocationForLodgePage.jsp</result>
+    <result name="error" >/view/error.jsp</result>
+    <result name="login" >/view/invalidSession.jsp</result>
+</action>
+
+<!--  
+<action name="viewActivityBoardHeader" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewActivityBoardHeader">
+		<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/BeforeViewActivityBoardSplit.jsp</result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+</action>
+-->
+<action name="viewActivityBoardHeader" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="viewActivityBoardHeader">
+		<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/BeforeViewActivityBoard.jsp</result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+</action>
+	
+<action name="showActionPage" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="showActionPage">
+		<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/helpdeskActionPage.jsp</result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+</action>
+
+<action name="getPresentEmployee" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="getPresentEmployee">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	<action name="getRoomDetail" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="getRoomDetail">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="getEmployeeInfo" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="getEmployeeInfo">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="getEmployeeLocationInfo" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="getEmployeeLocationInfo">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+   
+   
+    <action name="fetchLocationInfo" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="fetchLocationInfo">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="fetchRCACAPAInfo" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="fetchRCACAPAInfo">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="viewResolvedStatusOnClick" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="viewResolvedStatusOnClick">
+		<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+ 
+	<action name="feedbackStatusDownload" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="getCurrentColumn" >
+           <result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/ConfirmForReportDownload.jsp</result>
+           <result name="error">/view/common_pages/error.jsp</result>
+           <result name="login">/view/common_pages/invalidSession.jsp</result>
+   </action>
+	
+	  <action name="feedbackDownloadAction" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="downloadExcel">
+		<result name="success" type="stream" >
+	             <param name="inputName">excelStream</param>
+	            <param name="contentType">application/octet-stream</param>
+	            <param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+	            <param name="bufferSize">2448</param>
+	            </result>
+	            <result name="error">/view/error.jsp</result>
+	             <result name="input">/view/error.jsp</result>
+	             <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+
+	
+	<action name="viewActivityBoardData" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="viewActivityBoardData">
+		<result name="success" type="json"><param name="root">masterViewProp</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="viewActivityBoardDataCounter" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="viewActivityBoardDataCounter">
+			<result name="success" type="json"><param name="root">jsonarr</param></result>
+		<result name="error">/view/error.jsp</result>
+		<result name="login">/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="activityBoardCount"  class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="activityBoardCount">
+            <result name="success" type="json"><param name="root">dataCountMap</param></result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>  
+	
+
+	
+	 <action name="getComplaintActivityDeatil"  class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="getComplaintActivityDeatil">
+           	<result name="success">/view/Over2Cloud/HelpDeskOver2Cloud/Acivity_Board/ViewActivityFormater.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+  
+     
+     <action name="editSMSModeData"  class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardAction" method="editSMSModeData">
+           	<result name="success">/view/success.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+   <!-- For Manual Excel Download -->
+     <action name="downloadHDMActivityReport" class="com.Over2Cloud.ctrl.helpdesk.activityboard.ActivityBoardGridView" method="excelDownloadHDMActivityReport">
+		<result name="success" type="stream" >
+	    	<param name="inputName">excelStream</param>
+	        <param name="contentType">application/octet-stream</param>
+	        <param name="contentDisposition">attachment; filename="${excelFileName}"</param>
+	        <param name="bufferSize">2448</param>
+	    </result>
+	    
+        <result name="error">/view/error.jsp</result>
+        <result name="input">/view/error.jsp</result>
+        <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+</package>
+</struts>

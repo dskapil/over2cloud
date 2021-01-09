@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+  
+   <package name="summary" extends="struts-default,json-default" namespace="/view/Over2Cloud/summaryReport">
+   
+   <action name="beforeSummaryReportHeader" class="com.Over2Cloud.ctrl.feedback.SummaryReportAction" method="beforeSummaryReportHeader">
+        <result name="success">/view/Over2Cloud/SummaryReport/viewSummaryReport.jsp</result>
+        <result name="error">/view/error.jsp</result>
+        <result name="login">/view/invalidSession.jsp</result>
+    </action>
+   
+   <action name="showAllSummaryReports" class="com.Over2Cloud.ctrl.feedback.SummaryReportAction" method="viewAllSummaryReports">
+        <result name="success" type="json"><param name="root">viewList</param>  </result>
+        <result name="error">/view/error.jsp</result>
+        <result name="login">/view/invalidSession.jsp</result>
+    </action>
+    
+    <action name="showEmailDetails" class="com.Over2Cloud.ctrl.feedback.SummaryReportAction" method="showEmailDetails">
+			 <result name="success" type="json"><param name="root">jsonArray</param></result>
+			<result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+   
+	</package>
+	</struts>

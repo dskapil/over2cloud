@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+    <package name="generalQuery" extends="struts-default,json-default" namespace="/view/generalQuery">
+    	 <!-- Activity Board -->
+    	 <action name="viewGenralQueryHeader" class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="viewGenralQueryHeader">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryActivityBoard.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+         <action name="genralQueryCounter"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="genralQueryCounter">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryCounter.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+       </action>
+         <action name="viewGenralQuery" class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="viewGenralQuery">
+            <result name="success" type="json"><param name="root">viewList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="fetchSource"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="fetchSource">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="fetchDDList"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="fetchDDListValue">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="fetchSpecialityList"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="fetchSpecialityList">
+            <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="fetchDoctorList"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="fetchDoctorList">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="fetchUserList"  class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="fetchUserList">
+            <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="viewGeneralQueryTATDetails" class="com.Over2Cloud.ctrl.gq.GeneralQueryActivityBoard" method="viewQueryOpenedTATDetails">
+            <result name="success">/view/Over2Cloud/generalQuery/history/generalQueryEscDetails.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <!-- End --> 
+        <!-- Add Genral Query -->
+        <action name="beforeAddGenralQuery" class="com.Over2Cloud.ctrl.gq.GeneralQueryAdd" method="beforeAddGenralQuery">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryAddQuery.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="fetchCategoryList"  class="com.Over2Cloud.ctrl.gq.GeneralQueryAdd" method="fetchCategoryList">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <action name="addGenralQuery" class="com.Over2Cloud.ctrl.gq.GeneralQueryAdd" method="addGenralQuery">
+            <interceptor-ref name="token" />
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="defaultStack"/>
+            <result name="invalid.token">/view/errorSubmit.jsp</result>
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" type="json"><param name="root">successMessage</param></result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+        <!-- History -->
+        <action name="viewHistoryLeadDetails" class="com.Over2Cloud.ctrl.gq.GeneralQueryHistory" method="vieLeadHistory">
+            <result name="success">/view/Over2Cloud/generalQuery/history/generalQueryDetails.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="patientBasicDetailsById"  class="com.Over2Cloud.ctrl.gq.GeneralQueryHistory" method="patientBasicDetailsById" >
+            <result name="success" type="json"><param name="root">profilemap</param></result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+         <action name="viewLastGeneralQueryActions" class="com.Over2Cloud.ctrl.gq.GeneralQueryHistory" method="viewLastGeneralQueryActions">
+            <result name="success">/view/Over2Cloud/generalQuery/history/generalQueryHistory.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+         <action name="fetchQueryFor" class="com.Over2Cloud.ctrl.gq.GeneralQueryHistory" method="fetchQueryFor">
+            <result name="success" type="json" ><param name="root">comments</param></result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+        <!-- Genral Query Action -->
+         <action name="beforeGeneralQueryAction" class="com.Over2Cloud.ctrl.gq.GeneralQueryAction" method="beforeGeneralQueryAction">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryAction.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="generalQueryAction" class="com.Over2Cloud.ctrl.gq.GeneralQueryAction" method="generalQueryAction">
+            <interceptor-ref name="token" />
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="defaultStack"/>
+            <result name="invalid.token">/view/errorSubmit.jsp</result>
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" type="json"><param name="root">successMessage</param></result>
+        </action>
+        <action name="beforeUpdateDetails" class="com.Over2Cloud.ctrl.gq.GeneralQueryPatientUpdate" method="beforeUpdateDetails">
+            <result name="success">/view/Over2Cloud/generalQuery/generalQueryUpdate.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+        </action>
+        <action name="updateGeneralQuery" class="com.Over2Cloud.ctrl.gq.GeneralQueryPatientUpdate" method="updateGeneralQuery">
+             <interceptor-ref name="token" />
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="defaultStack"/>
+            <result name="invalid.token">/view/errorSubmit.jsp</result>
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" type="json"><param name="root">successMessage</param></result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+        <!-- End -->
+    </package>
+</struts>

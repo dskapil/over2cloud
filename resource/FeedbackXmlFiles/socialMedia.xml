@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="socialMedia" extends="struts-default,json-default" namespace="/view/Over2Cloud/socialMedia">
+		
+			<action name="fetchRegion"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia"   method="fetchRegion">
+	 <result name="success" type="json"><param name="root">commonJsonArr</param></result>
+           <result name="error" >/view/error.jsp</result>
+           <result name="login">/view/invalidSession.jsp</result>
+	</action>
+		
+		<action name="showTicketHistory"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="showTicketHistory">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/showSocialTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+		
+		 <action name="beforeAddSocialMediaFeedback"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeAddSocialMediaFeedback">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/SocialMediaFeedbackAdd.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <!-- Agency -->
+     
+      <action name="beforeAgencySocialMediaVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialMediaVista">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/socialMediaAgencyVista.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+      <action name="fetchAgencySocialMediaVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchAgencySocialMediaVista">
+            <result name="success" type="json"><param name="root">socialDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+      <action name="viewSocialMediaAgencyStatusCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSocialMediaAgencyStatusCounter">
+	<result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+	
+	<action name="viewSocialMediaMarketingStatusCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSocialMediaMarketingStatusCounter">
+	<result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+		
+		
+		
+		<action name="showActionAgencyComments"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="showActionAgencyComments">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/showCommentsTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+		<action name="showActionComments"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="showActionComments">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/showCommentsTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+     	<action name="showUnreadAgencyComments"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="showUnreadAgencyComments">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/showCommentsTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="showUnreadMktComments"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="showUnreadMktComments">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/showCommentsTicketHistory.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <!-- Agency -->
+     
+  
+   
+   <!-- Marketing -->  
+		<action name="beforeSocialMediaVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialMediaVista">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/socialMediaVista.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="viewSocialMediaStatusCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSocialMediaStatusCounter">
+	<result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+	
+	 <action name="viewSocialMediaPEStatusCounter" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSocialMediaPEStatusCounter">
+	<result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+	</action>
+	
+	
+	
+		
+		    <action name="getSocialMediaVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchSocialMediaVista">
+            <result name="success" type="json"><param name="root">socialDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+ 
+		 <action name="beforeSocialMediaVistaTakeAction"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialMediaVistaTakeAction">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/takeActionsocialMediaVista.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action> 
+     
+    <!-- editing work -->
+      <action name="beforeSocialMediaVistaTakeEdit"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="editSocialMediaVista">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/editSocialMedia.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action> 
+     
+     
+     <action name="editlodgeTicket"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="editlodgeTicket">
+            	<result name="success" type="json"><param name="root">successMessage</param></result>
+            	<result name="error" >/view/error.jsp</result>
+            	<result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+ <!-- Marketing -->
+ 
+ 
+ <action name="fetchPEHeadmail"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchPEHeadmail">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="fetchUnit"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchUnitForSocialVistaAction">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+      <action name="fetchPEData"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchUnitwisePEForSocialVista">
+            <result name="success" type="json"><param name="root">jssonArr</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+  
+  
+  <action name="lodgeTickettoPEVIaSocialVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="lodgeTickettoPEVIaSocialVista">
+                 <interceptor-ref name="token"/> 
+                <interceptor-ref name="basicStack"/>
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+      <action name="fetchChatData"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchChatDataForSocialVista">
+             <result name="success" type="json"><param name="root">socialDataList</param></result>
+             <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+ <action name="fetchPEChatData"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchPEChatDataForSocialVista">
+             <result name="success" type="json"><param name="root">socialDataList</param></result>
+             <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+     
+     
+     <!-- Chandan -->
+     
+				<action name="beforeSocialGroupView" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialGroupView">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/beforeSocialMediaGroup.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+     
+     <action name="addFeedbackSocialGroup" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="addFeedbackSocialGroup">
+	<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/addSocialMediaGroup.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+     
+     
+    
+     <action name="feedbackViaSocialAdd" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="feedbackViaSocialAdd">
+	<interceptor-ref name="token" /> 
+                <interceptor-ref name="basicStack"/>
+	<result name="success" type="json"><param name="root">successMessage</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="invalid.token">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+     
+     
+     <action name="editFeedbackSocialGroup" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="editFeedbackSocialGroup">
+	<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/editSocialMediaGroup.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+     
+     
+     <action name="feedbackViaSocialEdit" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="feedbackViaSocialEdit">
+	<interceptor-ref name="token" /> 
+                <interceptor-ref name="basicStack"/>
+	<result name="success" type="json"><param name="root">successMessage</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="invalid.token">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+     
+	
+	
+	
+	
+	<action name="viewSocialforGroup" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSocialforGroup">
+			<result name="success" type="json"><param name="root">masterViewList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+		
+		<action name="viewSubGroupMail"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewSubGroupMail">
+              	<result name="success" type="json"><param name="root">masterViewList</param></result>
+                <result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+		
+		<action name="editSocialGroupfields" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="editSocialGroupfields">
+	<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/editSocialMediaGroup.jsp</result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+	
+	
+   <action name="socialGroupUserDelete" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="socialGroupUserDelete">
+            <result name="success">/view/success.jsp</result>
+            <result name="error">/view/error.jsp</result>
+            <result name="login">/view/invalidSession.jsp</result>
+        </action>
+	
+	
+	<action name="beforeSocialMediaReport"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialMediaReport">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/socialMediaReport.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+		
+		
+		 <action name="getSocialMediaVistawithReport"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="fetchSocialMediaVistawithReport">
+            <result name="success" type="json"><param name="root">socialDataList</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+		
+		 <action name="beforeSocialMediaReportTakeAction"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="beforeSocialMediaReportTakeAction">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/takeActionsocialMediaReport.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action> 
+     
+     
+		 <action name="lodgeTicketforScialReport"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="lodgeTicketforScialReport">
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     
+	<action name="filedownload" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="filedownload">
+		  <result name="success" type="stream" >
+		      <param name="contentType">application/octet-stream</param>
+		      <param name="inputName">fileInputStream</param>
+		      <param name="contentDisposition">attachment;filename=%{fileName}</param>
+		      <param name="bufferSize">4096</param>
+	      </result>
+	      <result name="login">/view/common_pages/invalidSession.jsp</result>
+	      <result name="error">/view/common_pages/error.jsp</result>
+    </action>
+    
+<action name="chatViasocialVista"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="insertIntoSocailVistaChat">
+            <result name="success" type="json"><param name="includeProperties">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="chatViasocialVistaviaPE"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="chatViasocialVistaviaPE">
+            <result name="success" type="json"><param name="includeProperties">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	
+	<!-- social media master for employee mapping -->
+ <action name="beforeSocailMedia"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="beforeSocailMedia">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/socialMediaMaster.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+  
+  <action name="socalMediaEmpMapping"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="socalMediaEmpMapping">
+            <result name="success" type="json"><param name="root">masterViewProp</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+   <action name="beforeSocialVistaAdd"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="beforeSocialVistaAdd">
+            <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/addSocialVistaEmpMapping.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="regionBasedUnitName"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="regionBasedUnitName">
+            <result name="success" type="json"><param name="root">jsonArrayData</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+   
+ <action name="getUnitBasedDepartmentName"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="getUnitBasedDepartmentName">
+            <result name="success" type="json"><param name="root">jsonArray</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>   
+ 
+  <action name="getEmployeeByDepartment"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="getEmployeeByDepartment">
+            <result name="success" type="json"><param name="root">jsonArrayEmp</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>    
+     <action name="addSocialEmpMapping"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="addSocialEmpMapping">
+            <result name="success" type="json" ><param name="root">messageData</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>   
+ 
+ <action name="inActiveRecord"  class="com.Over2Cloud.ctrl.feedback.SocialMediaMaster" method="inActiveRecord">
+            <result name="success" type="json" ><param name="root">messageData</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action> 
+	
+	<!-- end master -->
+	
+	<!-- Employee List -->
+	
+	<action name="fatchMultiselectEmployee" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia"  method="fatchMultiselectEmployee">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/multiEmployeeListPage.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+	
+	
+	 
+	<!-- Tracker -->
+	
+	<action name="showHistoryforSocialMedia" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia"  method="showHistoryforSocialMedia">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/actionOnSoicaltracker.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+ 	
+ 	<action name="showHistoryforSocialMediaTicket" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia"  method="showHistoryforSocialMedia">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/HistoryOfSocialTracker.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+	
+	<!--  lodgeTickettoPEVIaSocialVista   -->
+	<action name="closureactionfromPE"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="closureactionfromPE">
+            <result name="success" type="json"><param name="root">successMessage</param></result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+     </action>
+   
+   
+   <action name="fatchMultiselectUnit" class="com.Over2Cloud.ctrl.feedback.FeedbackDashboardReportHOD"  method="fatchMultiselectUnit">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/singleUnitListPage.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+	
+	<!-- Tracker -->
+	
+	<action name="showEmailFields" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia"  method="showEmailFields">
+			<result name="success">/view/Over2Cloud/feedback/activity/socialMedia/addMailIds.jsp</result>
+			<result name="error">/view/common_pages/error.jsp</result>
+			<result name="login">/view/common_pages/invalidSession.jsp</result>
+ 	</action>
+ 	
+ 	
+	 <action name="addMailCC" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="addMailCC">
+	<result name="success" type="json"><param name="root">successMessage</param></result>
+	<result name="error">/view/error.jsp</result>
+	<result name="login">/view/invalidSession.jsp
+	</result>
+	</action>
+     
+      <action name="viewOpenedTATDetails" class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="viewOpenedTATDetails">
+			<result name="success" >/view/Over2Cloud/feedback/activity/reopenTATDetails.jsp</result>
+            <result name="error" >/view/error.jsp</result>
+            <result name="login" >/view/invalidSession.jsp</result>
+		</action>
+		
+		
+		<!-- attchement  by ck -->
+	<action name="attachmentHistoryView"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="attachmentHistoryView">
+               <result name="success">/view/Over2Cloud/feedback/activity/socialMedia/Attachment.jsp</result>
+				<result name="error">/view/error.jsp</result>
+				<result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+     <action name="attachmentupdate"  class="com.Over2Cloud.ctrl.feedback.FeedbackViaSocialMedia" method="attachmentupdate">
+           <result name="success" type="json"><param name="root">successMessage</param></result>
+            	<result name="error" >/view/error.jsp</result>
+            	<result name="login" >/view/invalidSession.jsp</result>
+     </action>
+	
+	</package>
+</struts>
+

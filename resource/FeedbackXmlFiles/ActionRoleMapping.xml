@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="actionRoleMapping" extends="struts-default,json-default" namespace="/view/Over2Cloud/Admin/ActionRoleMapping">
+		<!-- Up[load user profile -->
+		
+		 <action name="fetchMappedManageContactEmployeeRole"  class="com.Over2Cloud.ctrl.feedback.master.ActionRoleMapping" method="fetchMappedManageContactEmployeeRole">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+		
+		<action name="getmappedemployeeRole"  class="com.Over2Cloud.ctrl.feedback.master.ActionRoleMapping" method="getmappedemployeeRole">
+          <result name="success" type="json"><param name="root">jsonList</param></result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+		
+		  <action name="deleteEmpByTrashRole"  class="com.Over2Cloud.ctrl.feedback.master.ActionRoleMapping" method="deleteEmpByTrashRole">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>
+     
+	<action name="addShiftWithWingMapSaveRole"  class="com.Over2Cloud.ctrl.feedback.master.ActionRoleMapping" method="addShiftWithWingMapSaveRole">
+          <result name="success">/view/success.jsp</result>
+		 <result name="error">/view/error.jsp</result>
+		 <result name="login">/view/invalidSession.jsp</result>
+     </action>	
+		
+		
+		
+	</package>
+</struts>
